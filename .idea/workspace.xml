@@ -22,6 +22,7 @@
     <list default="true" id="6df7bf4e-f7c4-4f41-9979-5c462dba3fe9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -49,7 +50,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/vendor/fonts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../russian-travel" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -99,9 +100,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="306" y="27" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1609109065762" />
-    <state x="369" y="37" key="FileChooserDialogImpl" timestamp="1609108512447">
+    <state x="369" y="37" key="FileChooserDialogImpl" timestamp="1609290275784">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="369" y="37" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1609108512447" />
+    <state x="369" y="37" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1609290275784" />
   </component>
 </project>
