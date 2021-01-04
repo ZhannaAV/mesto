@@ -1,9 +1,10 @@
 .profile__info{
 	margin-left: 30px;
 	margin-right: auto;
+	display: -ms-grid;
 	display: grid;
 	grid-template-columns: fit-content(350px) 24px;
-	gap: 16px 18px;
+	grid-gap: 16px 18px;
 }
 
 @media screen and (max-width: 600px) {
