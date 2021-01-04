@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6df7bf4e-f7c4-4f41-9979-5c462dba3fe9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/profile/__info/profile__info.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/profile/__info/profile__info.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Close Icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/close_icon.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.css" afterDir="false" />
     </list>
@@ -63,6 +63,7 @@
       <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\blocks\popup\__input\_type" />
       <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\blocks" />
       <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\pages" />
     </key>
