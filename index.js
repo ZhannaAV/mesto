@@ -32,3 +32,9 @@ editButton.addEventListener('click', openPopup);
 closeButton.addEventListener('click', closePopup);
 submitButton.addEventListener('click', handleFormSubmit);
 
+let cardLike = document.querySelectorAll('.card__like');
+for (let i = 0; i < 6; i++) {
+    cardLike[i].addEventListener('click', function (){
+        cardLike[i].classList.toggle('card__like_active')
+    });
+}

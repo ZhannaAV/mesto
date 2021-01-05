@@ -21,11 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6df7bf4e-f7c4-4f41-9979-5c462dba3fe9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/card/__like/_active/card__like_active.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/card/__like/_active/card__like_active.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Group.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/Heart.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Union.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/Heart-active.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Vector.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/Plus.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +75,7 @@
       <option name="presentableId" value="Default" />
       <updated>1609107829384</updated>
       <workItem from="1609107830550" duration="7139000" />
-      <workItem from="1609861063342" duration="6767000" />
+      <workItem from="1609861063342" duration="9111000" />
     </task>
     <servers />
   </component>
