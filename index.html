@@ -21,7 +21,7 @@
 				<p class="profile__profession">Исследователь океана</p>
 			</div>
 			<button class="profile__add-button">
-				<img class="profile__symbol-plus" src="images/Vector.svg">
+				<img class="profile__symbol-plus" src="images/Vector.svg" alt="плюс">
 			</button>
 		</section>
 		<ul class="cards">
@@ -84,8 +84,9 @@
 			<form class="popup__container">
 				<h2 class="popup__title">Редактировать профиль</h2>
 				<fieldset class="popup__input-field">
-					<input class="popup__input popup__input_type_name" type="text" name="name" required>
-					<input class="popup__input popup__input_type_profession" type="text" name="profession" required>
+					<input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Имя" required>
+					<input class="popup__input popup__input_type_profession" type="text" name="profession" placeholder="О себе"
+					       required>
 				</fieldset>
 				<button class="popup__submit-button" type="submit">Сохранить</button>
 				<div class="popup__close"></div>
