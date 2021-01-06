@@ -21,11 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6df7bf4e-f7c4-4f41-9979-5c462dba3fe9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/card/__caption/card__caption.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/card/__caption/card__caption.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/card/__like/_active/card__like_active.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/card/__like/_active/card__like_active.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blocks/card/__like/card__like.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/card/__like/card__like.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/card/__title/card__title.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/card/__title/card__title.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/card/card.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/card/card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__close/popup__close.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__close/popup__close.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__container/popup__container.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__container/popup__container.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__submit-button/popup__submit-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__submit-button/popup__submit-button.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/popup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,5 +112,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="369" y="37" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1609890581617" />
+    <state x="219" y="0" width="840" height="1034" key="search.everywhere.popup" timestamp="1609962427194">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="219" y="0" width="840" height="1034" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1609962427194" />
   </component>
 </project>

@@ -12,3 +12,7 @@
 	cursor: pointer;
 	transition-duration: .3s;
 }
+
+.card__like:focus{
+	outline: none;
+}
