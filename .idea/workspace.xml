@@ -21,12 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6df7bf4e-f7c4-4f41-9979-5c462dba3fe9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/card/__like/card__like.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/card/__like/card__like.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__close/popup__close.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__close/popup__close.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__container/popup__container.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__container/popup__container.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__submit-button/popup__submit-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__submit-button/popup__submit-button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/popup.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,15 +56,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\scripts" />
+      <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\blocks\popup\__input\_type" />
+      <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\blocks" />
+      <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\pages" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\vendor\fonts" />
       <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\vendor" />
       <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\blocks\popup\__input\_type" />
-      <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\blocks" />
-      <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\pages" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
