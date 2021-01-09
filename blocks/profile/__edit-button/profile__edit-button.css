@@ -5,13 +5,14 @@
 	height: 24px;
 	align-self: self-end;
 	border: none;
+	transition-duration: .3s;
+
 
 }
 
 .profile__edit-button:hover{
 	opacity: .6;
 	cursor: pointer;
-	transition-duration: .3s;
 }
 
 @media screen and (max-width: 600px) {

@@ -9,12 +9,13 @@
 	width: 57px;
 	height: 57px;
 	position: absolute;
+	transition-duration: .3s;
+
 }
 
 .popup__close:hover{
 	opacity: .6;
 	cursor: pointer;
-	transition-duration: .3s;
 }
 
 .popup__close:focus{

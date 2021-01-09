@@ -9,12 +9,13 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	border-radius: 2px;
+	transition-duration: .3s;
+
 }
 
 .profile__add-button:hover{
 	opacity: .6;
 	cursor: pointer;
-	transition-duration: .3s;
 }
 
 @media screen and (max-width: 600px) {
