@@ -6,6 +6,7 @@ let inputProfession = popupForm.querySelector('.popup__input_type_profession');
 let profileName = document.querySelector('.profile__name');
 let profileProfession = document.querySelector('.profile__profession');
 let editButton = document.querySelector('.profile__edit-button');
+let cards = document.querySelector('.cards');
 
 function closePopup(){
     popup.classList.remove('popup_opened');
@@ -27,4 +28,9 @@ function handleFormSubmit (evt) {
 editButton.addEventListener('click', openPopup);
 closeButton.addEventListener('click', closePopup);
 popupForm.addEventListener('submit', handleFormSubmit);
-
+cards.addEventListener('click', function (evt){
+    let element = evt.target;
+    if (element.classList.contains('card__like')) {
+        element.classList.toggle('card__like_active')
+    }
+})
