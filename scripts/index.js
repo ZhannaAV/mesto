@@ -7,6 +7,47 @@ let profileName = document.querySelector('.profile__name');
 let profileProfession = document.querySelector('.profile__profession');
 let editButton = document.querySelector('.profile__edit-button');
 let cards = document.querySelector('.cards');
+let template = document.querySelector('.template').content;
+
+
+const initialCards = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
+
+
+initialCards.forEach((item, index) => {
+    let card = template.cloneNode(true);
+    card.querySelector('.card__image').classList.add(`card__link${index}`);
+    let link = card.querySelector(`.card__link${index}`)
+    link.style.backgroundImage = `url(${item.link})`;
+    card.querySelector('.card__title').textContent = item.name;
+    cards.append(card)
+});
+
+
 
 function closePopup(){
     popup.classList.remove('popup_opened');
