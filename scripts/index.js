@@ -4,7 +4,7 @@ let editButton = document.querySelector('.profile__edit-button');
 let addButton = document.querySelector('.profile__add-button');
 
 /*переменные для попапа редактирование профайла*/
-let popupProfile = document.querySelector('.popup__edit-profile');
+let popupProfile = document.querySelector('.popup_for_edit-profile');
 let popupFormProfile = popupProfile.querySelector('.popup__form');
 let inputProfileName = popupFormProfile.querySelector('.popup__input_type_name');
 let inputProfession = popupFormProfile.querySelector('.popup__input_type_profession');
@@ -16,7 +16,7 @@ let template = document.querySelector('.template').content;
 let cards = document.querySelector('.cards');
 
 /* переменные для попапа добавления карточек*/
-let popupAddCard = document.querySelector('.popup__add-card');
+let popupAddCard = document.querySelector('.popup_for_add-card');
 let popupFormAddCard = popupAddCard.querySelector('.popup__form');
 let inputCardName = popupFormAddCard.querySelector('.popup__input_type_place');
 let inputCardUrl = popupFormAddCard.querySelector('.popup__input_type_url');
