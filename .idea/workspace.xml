@@ -21,9 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6df7bf4e-f7c4-4f41-9979-5c462dba3fe9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__container/popup__container.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__form/popup__form.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,6 +113,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="94" y="94" width="1092" height="492" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1610500408147" />
+    <state x="415" y="73" key="refactoring.ChangeSignatureDialog" timestamp="1610509802311">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="415" y="73" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1610509802311" />
     <state x="384" y="166" key="scopes" timestamp="1610498859409">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
