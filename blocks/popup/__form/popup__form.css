@@ -17,5 +17,7 @@
 	.popup__form{
 		margin-top: 123px;
 		padding: 25px 22px;
+		margin-left: 19px;
+		margin-right: 19px;
 	}
 }

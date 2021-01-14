@@ -49,25 +49,33 @@ const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 
 /*переменные для попапа редактирование профайла*/
-let popupProfile = document.querySelector('.popup_for_edit-profile');
-let popupFormProfile = popupProfile.querySelector('.popup__form');
+const popupProfile = document.querySelector('.popup_for_edit-profile');
+const popupFormProfile = popupProfile.querySelector('.popup__form');
 let inputProfileName = popupFormProfile.querySelector('.popup__input_type_name');
 let inputProfession = popupFormProfile.querySelector('.popup__input_type_profession');
 let profileName = document.querySelector('.profile__name');
 let profileProfession = document.querySelector('.profile__profession');
 
 /* переменные для попапа добавления карточек*/
-let popupAddCard = document.querySelector('.popup_for_add-card');
-let popupFormAddCard = popupAddCard.querySelector('.popup__form');
+const popupAddCard = document.querySelector('.popup_for_add-card');
+const popupFormAddCard = popupAddCard.querySelector('.popup__form');
 let inputCardName = popupFormAddCard.querySelector('.popup__input_type_place');
 let inputCardUrl = popupFormAddCard.querySelector('.popup__input_type_url');
-
-
+ /*переменные для попапа с картинкой*/
+const popupWithImage = document.querySelector('.popup_for_image');
+let popupImage = popupWithImage.querySelector('.popup__image');
+let popupImgCaption = popupWithImage.querySelector('.popup__figcaption');
 function closePopup(evt) {
     const closeButton = evt.target;
     const popup = closeButton.closest('.popup');
     console.log(popup);
     popup.classList.remove('popup_opened');
+}
+
+function openPopupImage(element) {
+    popupImage.src = element.style.backgroundImage.slice(5,-2);
+    popupImgCaption.textContent = element.parentElement.querySelector('.card__title').textContent
+    popupWithImage.classList.add('popup_opened');
 }
 
 function openPopupProfile() {
@@ -117,6 +125,7 @@ popupFormAddCard.addEventListener('submit', addCardFormSubmit);
 /*обработчик карточек:лайк, удаление */
 cards.addEventListener('click', function (evt) {
     let element = evt.target;
+    console.log(evt)
     if (element.classList.contains('card__like')) return element.classList.toggle('card__like_active')
     if (element.classList.contains('card__delete')) {
         const card = element.parentElement
@@ -125,6 +134,7 @@ cards.addEventListener('click', function (evt) {
         initialCards.splice(index, 1);
         card.remove()
     }
+    if (element.classList.contains('card__image')) openPopupImage(element)
 })
 /*------------------Версия работы кнопки удаления карточек(не удаляет новые карточки)-------------------------------*/
 // let deleteButton = document.querySelectorAll('.card__delete');
