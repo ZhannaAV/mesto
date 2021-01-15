@@ -26,25 +26,39 @@ const initialCards = [
 ];
 
 /*переменные для работы с карточками*/
-let template = document.querySelector('.template').content;
+const template = document.querySelector('.template').content;
 const cards = document.querySelector('.cards');
-
-function createCard (index, link, name) {
-    const card = template.cloneNode(true);
-    card.querySelector('.card__image').classList.add(`card__image${index}`);
-    let newCardClass = card.querySelector(`.card__image${index}`);
-    newCardClass.style.backgroundImage = `url(${link})`;
-    card.querySelector('.card__title').textContent = name;
-    cards.prepend(card)
-}
-/*на каждую карточку сделан отдельный класс, чтобы картинка подгружалась через background, цель - чтобы картинка
-* осталась квадратной при изменении размера родительского grid-элемента. Если есть хак, как это сделать через тег img-
-* буду признательна за инфу)*/
 
 /*функция добавляет карточки при загрузке страницы*/
 initialCards.forEach((item, index) => {
     createCard(index, item.link, item.name)
 });
+
+function createCard(index, link, name) {
+    const card = template.cloneNode(true);
+    card.querySelector('.card__image').classList.add(`card__image${index}`);
+    const newCardClass = card.querySelector(`.card__image${index}`);
+    newCardClass.style.backgroundImage = `url(${link})`;
+    card.querySelector('.card__title').textContent = name;
+    /*добавление обработчиков на элементы внутри карточки*/
+    newCardClass.addEventListener('click', openPopupImage);
+    card.querySelector('.card__like').addEventListener('click', like);
+    card.querySelector('.card__delete').addEventListener('click', cardDelete);
+    /*_________________________________________________________*/
+    cards.prepend(card)
+}
+
+function like(evt) {
+    evt.target.classList.toggle('card__like_active')
+}
+
+function cardDelete(evt) {
+    const card = evt.target.closest('.card');
+    const nameCard = card.querySelector('.card__title').textContent;
+    const index = initialCards.findIndex(el => el.name === nameCard);
+    initialCards.splice(index, 1);
+    card.remove();
+}
 
 /*кнопки*/
 const closeButtonList = document.querySelectorAll('.popup__close');
@@ -64,7 +78,8 @@ const popupAddCard = document.querySelector('.popup_for_add-card');
 const popupFormAddCard = popupAddCard.querySelector('.popup__form');
 const inputCardName = popupFormAddCard.querySelector('.popup__input_type_place');
 const inputCardUrl = popupFormAddCard.querySelector('.popup__input_type_url');
- /*переменные для попапа с картинкой*/
+
+/*переменные для попапа с картинкой*/
 const popupWithImage = document.querySelector('.popup_for_image');
 const popupImage = popupWithImage.querySelector('.popup__image');
 const popupImgCaption = popupWithImage.querySelector('.popup__figcaption');
@@ -83,8 +98,9 @@ function closePopupByBtn(evt) {
     closePopup(popup);
 }
 
-function openPopupImage(element) {
-    popupImage.src = element.style.backgroundImage.slice(5,-2);
+function openPopupImage(evt) {
+    const element = evt.target;
+    popupImage.src = element.style.backgroundImage.slice(5, -2);
     popupImgCaption.textContent = element.parentElement.querySelector('.card__title').textContent
     openPopup(popupWithImage);
 }
@@ -108,15 +124,15 @@ function ProfileFormSubmit(evt) {
     profileProfession.textContent = inputProfession.value;
     closePopup(popupProfile);
 }
+
 /*функция добавляет карточку через попап*/
 function addCardFormSubmit(evt) {
     evt.preventDefault();
     let index = initialCards.length;
-    createCard(index, inputCardUrl.value,inputCardName.value);
+    createCard(index, inputCardUrl.value, inputCardName.value);
     closePopup(popupAddCard);
     initialCards.push({name: inputCardName.value, link: inputCardUrl.value});
 }
-
 
 /*------------------обработчики событий----------------------------------*/
 closeButtonList.forEach(item => {
@@ -129,36 +145,3 @@ addButton.addEventListener('click', openPopupAddCard);
 popupFormProfile.addEventListener('submit', ProfileFormSubmit);
 popupFormAddCard.addEventListener('submit', addCardFormSubmit);
 
-/*обработчик карточек:лайк, удаление */
-cards.addEventListener('click', function (evt) {
-    const element = evt.target;
-    console.log(evt)
-    if (element.classList.contains('card__like')) return element.classList.toggle('card__like_active')
-    if (element.classList.contains('card__delete')) {
-        const card = element.parentElement
-        const nameCard = card.querySelector('.card__title').textContent;
-        const index = initialCards.findIndex(el => el.name === nameCard);
-        initialCards.splice(index, 1);
-        card.remove()
-    }
-    if (element.classList.contains('card__image')) openPopupImage(element)
-})
-/*------------------Версия работы кнопки удаления карточек(не удаляет новые карточки)-------------------------------*/
-// let deleteButton = document.querySelectorAll('.card__delete');
-
-
-/*function deleteCard(evt) {
-    const deleteButton = evt.target;
-    console.log(deleteButton)
-    const card = deleteButton.parentElement;
-    const nameCard = card.querySelector('.card__title').textContent;
-    const index = initialCards.findIndex(el => el.name === nameCard);
-    initialCards.splice(index, 1);
-    card.remove()
-}*/
-
-/*
-deleteButton.forEach(item => {
-        item.addEventListener('click', deleteCard);
-    })
-*/
