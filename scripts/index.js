@@ -27,93 +27,100 @@ const initialCards = [
 
 /*переменные для работы с карточками*/
 let template = document.querySelector('.template').content;
-let cards = document.querySelector('.cards');
+const cards = document.querySelector('.cards');
 
-/*функция добавляет карточки при загрузке страницы*/
-initialCards.forEach((item, index) => {
-    let card = template.cloneNode(true);
+function createCard (index, link, name) {
+    const card = template.cloneNode(true);
     card.querySelector('.card__image').classList.add(`card__image${index}`);
-    let newCardClass = card.querySelector(`.card__image${index}`)
-    newCardClass.style.backgroundImage = `url(${item.link})`;
-    card.querySelector('.card__title').textContent = item.name;
+    let newCardClass = card.querySelector(`.card__image${index}`);
+    newCardClass.style.backgroundImage = `url(${link})`;
+    card.querySelector('.card__title').textContent = name;
     cards.prepend(card)
-});
+}
 /*на каждую карточку сделан отдельный класс, чтобы картинка подгружалась через background, цель - чтобы картинка
 * осталась квадратной при изменении размера родительского grid-элемента. Если есть хак, как это сделать через тег img-
 * буду признательна за инфу)*/
 
+/*функция добавляет карточки при загрузке страницы*/
+initialCards.forEach((item, index) => {
+    createCard(index, item.link, item.name)
+});
 
 /*кнопки*/
-const closeButton = document.querySelectorAll('.popup__close');
+const closeButtonList = document.querySelectorAll('.popup__close');
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 
 /*переменные для попапа редактирование профайла*/
 const popupProfile = document.querySelector('.popup_for_edit-profile');
 const popupFormProfile = popupProfile.querySelector('.popup__form');
-let inputProfileName = popupFormProfile.querySelector('.popup__input_type_name');
-let inputProfession = popupFormProfile.querySelector('.popup__input_type_profession');
-let profileName = document.querySelector('.profile__name');
-let profileProfession = document.querySelector('.profile__profession');
+const inputProfileName = popupFormProfile.querySelector('.popup__input_type_name');
+const inputProfession = popupFormProfile.querySelector('.popup__input_type_profession');
+const profileName = document.querySelector('.profile__name');
+const profileProfession = document.querySelector('.profile__profession');
 
 /* переменные для попапа добавления карточек*/
 const popupAddCard = document.querySelector('.popup_for_add-card');
 const popupFormAddCard = popupAddCard.querySelector('.popup__form');
-let inputCardName = popupFormAddCard.querySelector('.popup__input_type_place');
-let inputCardUrl = popupFormAddCard.querySelector('.popup__input_type_url');
+const inputCardName = popupFormAddCard.querySelector('.popup__input_type_place');
+const inputCardUrl = popupFormAddCard.querySelector('.popup__input_type_url');
  /*переменные для попапа с картинкой*/
 const popupWithImage = document.querySelector('.popup_for_image');
-let popupImage = popupWithImage.querySelector('.popup__image');
-let popupImgCaption = popupWithImage.querySelector('.popup__figcaption');
-function closePopup(evt) {
+const popupImage = popupWithImage.querySelector('.popup__image');
+const popupImgCaption = popupWithImage.querySelector('.popup__figcaption');
+
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+}
+
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+}
+
+function closePopupByBtn(evt) {
     const closeButton = evt.target;
     const popup = closeButton.closest('.popup');
-    console.log(popup);
-    popup.classList.remove('popup_opened');
+    closePopup(popup);
 }
 
 function openPopupImage(element) {
     popupImage.src = element.style.backgroundImage.slice(5,-2);
     popupImgCaption.textContent = element.parentElement.querySelector('.card__title').textContent
-    popupWithImage.classList.add('popup_opened');
+    openPopup(popupWithImage);
 }
 
 function openPopupProfile() {
     inputProfileName.value = profileName.textContent;
     inputProfession.value = profileProfession.textContent;
-    popupProfile.classList.add('popup_opened');
+    openPopup(popupProfile);
 }
 
 function openPopupAddCard() {
     inputCardName.value = '';
     inputCardUrl.value = '';
-    popupAddCard.classList.add('popup_opened');
+    openPopup(popupAddCard);
 }
 
+/*функция редактирует профайл через попап*/
 function ProfileFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = inputProfileName.value;
     profileProfession.textContent = inputProfession.value;
-    popupProfile.classList.remove('popup_opened');
+    closePopup(popupProfile);
 }
-
+/*функция добавляет карточку через попап*/
 function addCardFormSubmit(evt) {
     evt.preventDefault();
-    let card = template.cloneNode(true);
     let index = initialCards.length;
-    card.querySelector('.card__image').classList.add(`card__image${index}`);
-    let newCardClass = card.querySelector(`.card__image${index}`)
-    newCardClass.style.backgroundImage = `url(${inputCardUrl.value})`;
-    card.querySelector('.card__title').textContent = inputCardName.value;
-    cards.prepend(card);
-    popupAddCard.classList.remove('popup_opened');
+    createCard(index, inputCardUrl.value,inputCardName.value);
+    closePopup(popupAddCard);
     initialCards.push({name: inputCardName.value, link: inputCardUrl.value});
 }
 
 
 /*------------------обработчики событий----------------------------------*/
-closeButton.forEach(item => {
-        item.addEventListener('click', closePopup);
+closeButtonList.forEach(item => {
+        item.addEventListener('click', closePopupByBtn);
     }
 )
 
@@ -124,7 +131,7 @@ popupFormAddCard.addEventListener('submit', addCardFormSubmit);
 
 /*обработчик карточек:лайк, удаление */
 cards.addEventListener('click', function (evt) {
-    let element = evt.target;
+    const element = evt.target;
     console.log(evt)
     if (element.classList.contains('card__like')) return element.classList.toggle('card__like_active')
     if (element.classList.contains('card__delete')) {
