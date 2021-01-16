@@ -30,22 +30,21 @@ const template = document.querySelector('.template').content;
 const cards = document.querySelector('.cards');
 
 /*функция добавляет карточки при загрузке страницы*/
-initialCards.forEach((item, index) => {
-    createCard(index, item.link, item.name)
+initialCards.forEach((item/*, index*/) => {
+    const card = createCard(/*index,*/ item.link, item.name);
+    cards.prepend(card);
 });
 
-function createCard(index, link, name) {
+function createCard(link, name) {
     const card = template.cloneNode(true);
-    card.querySelector('.card__image').classList.add(`card__image${index}`);
-    const newCardClass = card.querySelector(`.card__image${index}`);
-    newCardClass.style.backgroundImage = `url(${link})`;
+    card.querySelector('.card__image').style.backgroundImage = `url(${link})`;
     card.querySelector('.card__title').textContent = name;
     /*добавление обработчиков на элементы внутри карточки*/
-    newCardClass.addEventListener('click', openPopupImage);
+    card.querySelector('.card__image').addEventListener('click', openPopupImage);
     card.querySelector('.card__like').addEventListener('click', like);
     card.querySelector('.card__delete').addEventListener('click', cardDelete);
     /*_________________________________________________________*/
-    cards.prepend(card)
+    return card;
 }
 
 function like(evt) {
@@ -54,9 +53,6 @@ function like(evt) {
 
 function cardDelete(evt) {
     const card = evt.target.closest('.card');
-    const nameCard = card.querySelector('.card__title').textContent;
-    const index = initialCards.findIndex(el => el.name === nameCard);
-    initialCards.splice(index, 1);
     card.remove();
 }
 
@@ -128,10 +124,9 @@ function ProfileFormSubmit(evt) {
 /*функция добавляет карточку через попап*/
 function addCardFormSubmit(evt) {
     evt.preventDefault();
-    let index = initialCards.length;
-    createCard(index, inputCardUrl.value, inputCardName.value);
+    const card = createCard(inputCardUrl.value, inputCardName.value);
+    cards.prepend(card);
     closePopup(popupAddCard);
-    initialCards.push({name: inputCardName.value, link: inputCardUrl.value});
 }
 
 /*------------------обработчики событий----------------------------------*/
