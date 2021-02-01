@@ -80,8 +80,9 @@ const popupWithImage = document.querySelector('.popup_for_image');
 const popupImage = popupWithImage.querySelector('.popup__image');
 const popupImgCaption = popupWithImage.querySelector('.popup__figcaption');
 
-/*список инпутов*/
+/*списки*/
 const inputList = document.querySelectorAll('.popup__input')
+const overlayList = document.querySelectorAll('.popup')
 
 /*заполнение полей попапа для профайла до открытия попапа*/
 function fillProfilePopup () {
@@ -153,18 +154,17 @@ function closePopupByEsc(evt) {
 if(evt.key === 'Escape') {
     const popup = evt.target.closest('.popup')
     closePopup(popup)
-}
-}
+}}
 
+function closePopupByOverlay(evt) {
+    if(evt.target.nodeName === 'DIV') closePopup(evt.target)
+}
 /*------------------обработчики событий----------------------------------*/
-closeButtonList.forEach(item => {
-        item.addEventListener('click', closePopupByBtn);
-})
+closeButtonList.forEach(item => item.addEventListener('click', closePopupByBtn))
 
-inputList.forEach(item => {
-    item.addEventListener("keydown", closePopupByEsc)
-})
+inputList.forEach(item => item.addEventListener("keydown", closePopupByEsc))
 
+overlayList.forEach(item => item.addEventListener('click', closePopupByOverlay))
 
 editButton.addEventListener('click', openPopupProfile);
 addButton.addEventListener('click', openPopupAddCard);
