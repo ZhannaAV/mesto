@@ -80,8 +80,7 @@ const popupWithImage = document.querySelector('.popup_for_image');
 const popupImage = popupWithImage.querySelector('.popup__image');
 const popupImgCaption = popupWithImage.querySelector('.popup__figcaption');
 
-/*списки*/
-const inputList = document.querySelectorAll('.popup__input')
+/*список оверлэй*/
 const overlayList = document.querySelectorAll('.popup')
 
 /*заполнение полей попапа для профайла до открытия попапа*/
@@ -105,11 +104,6 @@ function closePopup(popup) {
     resetError (popup)
 }
 
-function closePopupByBtn(evt) {
-    const closeButton = evt.target;
-    const popup = closeButton.closest('.popup');
-    closePopup(popup);
-}
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -133,7 +127,6 @@ function openPopupAddCard() {
     openPopup(popupAddCard);
 }
 
-
 /*функция редактирует профайл через попап*/
 function ProfileFormSubmit(evt) {
     evt.preventDefault();
@@ -149,23 +142,31 @@ function addCardFormSubmit(evt) {
     cards.prepend(card);
     closePopup(popupAddCard);
 }
-/*функция закрывает попап нажатии кнопки ESC, когда курсор в инпуте*/
+
+/*функция закрывает попап нажатии кнопки крестик*/
+function closePopupByBtn(evt) {
+    const closeButton = evt.target;
+    const popup = closeButton.closest('.popup');
+    closePopup(popup);
+}
+
+/*функция закрывает попап нажатии кнопки ESC*/
 function closePopupByEsc(evt) {
 if(evt.key === 'Escape') {
-    const popup = evt.target.closest('.popup')
+    const popup = document.querySelector('.popup_opened')
     closePopup(popup)
 }}
 
+/*закрывает попап по клику на оверлэй*/
 function closePopupByOverlay(evt) {
     if(evt.target.nodeName === 'DIV') closePopup(evt.target)
 }
 /*------------------обработчики событий----------------------------------*/
 closeButtonList.forEach(item => item.addEventListener('click', closePopupByBtn))
 
-inputList.forEach(item => item.addEventListener("keydown", closePopupByEsc))
-
 overlayList.forEach(item => item.addEventListener('click', closePopupByOverlay))
 
+document.addEventListener('keydown', closePopupByEsc)
 editButton.addEventListener('click', openPopupProfile);
 addButton.addEventListener('click', openPopupAddCard);
 popupFormProfile.addEventListener('submit', ProfileFormSubmit);
