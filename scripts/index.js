@@ -68,8 +68,6 @@ const inputProfileName = popupFormProfile.querySelector('.popup__input_type_name
 const inputProfession = popupFormProfile.querySelector('.popup__input_type_profession');
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
-inputProfileName.value = profileName.textContent;
-inputProfession.value = profileProfession.textContent;
 
 /* переменные для попапа добавления карточек*/
 const popupAddCard = document.querySelector('.popup_for_add-card');
@@ -82,9 +80,28 @@ const popupWithImage = document.querySelector('.popup_for_image');
 const popupImage = popupWithImage.querySelector('.popup__image');
 const popupImgCaption = popupWithImage.querySelector('.popup__figcaption');
 
+/*список инпутов*/
+const inputList = document.querySelectorAll('.popup__input')
+
+/*заполнение полей попапа для профайла до открытия попапа*/
+function fillProfilePopup () {
+    inputProfileName.value = profileName.textContent;
+    inputProfession.value = profileProfession.textContent;
+}
+
+fillProfilePopup()
+
+/*сбрасывает ошибки в попапе*/
+function resetError (popup) {
+const errorList = popup.querySelectorAll('.popup__input-error')
+const errorInputList = popup.querySelectorAll('.popup__input_invalid')
+    errorList.forEach(item => item.textContent = '')
+    errorInputList.forEach(item => item.classList.remove('popup__input_invalid'))
+}
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    resetError (popup)
 }
 
 function closePopupByBtn(evt) {
@@ -98,6 +115,7 @@ function openPopup(popup) {
 }
 
 function openPopupProfile() {
+    fillProfilePopup()
     openPopup(popupProfile);
 }
 
@@ -114,6 +132,7 @@ function openPopupAddCard() {
     openPopup(popupAddCard);
 }
 
+
 /*функция редактирует профайл через попап*/
 function ProfileFormSubmit(evt) {
     evt.preventDefault();
@@ -129,12 +148,23 @@ function addCardFormSubmit(evt) {
     cards.prepend(card);
     closePopup(popupAddCard);
 }
+/*функция закрывает попап нажатии кнопки ESC, когда курсор в инпуте*/
+function closePopupByEsc(evt) {
+if(evt.key === 'Escape') {
+    const popup = evt.target.closest('.popup')
+    closePopup(popup)
+}
+}
 
 /*------------------обработчики событий----------------------------------*/
 closeButtonList.forEach(item => {
         item.addEventListener('click', closePopupByBtn);
-    }
-)
+})
+
+inputList.forEach(item => {
+    item.addEventListener("keydown", closePopupByEsc)
+})
+
 
 editButton.addEventListener('click', openPopupProfile);
 addButton.addEventListener('click', openPopupAddCard);
