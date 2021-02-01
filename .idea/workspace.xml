@@ -20,14 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6df7bf4e-f7c4-4f41-9979-5c462dba3fe9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blocks/popup/__input-error/popup__input-error.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blocks/popup/__input/_invalid/popup__input_invalid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blocks/popup/__submit-button/_disadled/popup__submit-button_disabled.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/validate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__input-field/popup__input-field.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__input-field/popup__input-field.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__submit-button/popup__submit-button.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__submit-button/popup__submit-button.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +32,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -87,7 +82,7 @@
       <workItem from="1611586080177" duration="697000" />
       <workItem from="1611610038645" duration="7688000" />
       <workItem from="1611962104579" duration="638000" />
-      <workItem from="1612094867732" duration="6511000" />
+      <workItem from="1612094867732" duration="39426000" />
     </task>
     <servers />
   </component>
