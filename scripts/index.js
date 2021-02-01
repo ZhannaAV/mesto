@@ -68,6 +68,8 @@ const inputProfileName = popupFormProfile.querySelector('.popup__input_type_name
 const inputProfession = popupFormProfile.querySelector('.popup__input_type_profession');
 const profileName = document.querySelector('.profile__name');
 const profileProfession = document.querySelector('.profile__profession');
+inputProfileName.value = profileName.textContent;
+inputProfession.value = profileProfession.textContent;
 
 /* переменные для попапа добавления карточек*/
 const popupAddCard = document.querySelector('.popup_for_add-card');
@@ -80,12 +82,9 @@ const popupWithImage = document.querySelector('.popup_for_image');
 const popupImage = popupWithImage.querySelector('.popup__image');
 const popupImgCaption = popupWithImage.querySelector('.popup__figcaption');
 
+
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-}
-
-function openPopup(popup) {
-    popup.classList.add('popup_opened');
 }
 
 function closePopupByBtn(evt) {
@@ -94,17 +93,19 @@ function closePopupByBtn(evt) {
     closePopup(popup);
 }
 
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+}
+
+function openPopupProfile() {
+    openPopup(popupProfile);
+}
+
 function openPopupImage(evt) {
     const element = evt.target;
     popupImage.src = element.style.backgroundImage.slice(5, -2);
     popupImgCaption.textContent = element.parentElement.querySelector('.card__title').textContent
     openPopup(popupWithImage);
-}
-
-function openPopupProfile() {
-    inputProfileName.value = profileName.textContent;
-    inputProfession.value = profileProfession.textContent;
-    openPopup(popupProfile);
 }
 
 function openPopupAddCard() {

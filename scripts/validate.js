@@ -10,6 +10,7 @@ function enableValidation (obj) {
 const formList = Array.from(document.querySelectorAll(obj.formSelector));
 switchValidation(formList, obj)
 }
+
 /*переключает тип валидации форм*/
 function switchValidation (formList,obj) {
     formList.forEach(formItem => {
@@ -17,6 +18,7 @@ function switchValidation (formList,obj) {
         setFormRedactor (formItem, obj)
     })
 }
+
 /*обрабатывает изменения в форме*/
 function setFormRedactor (formItem, obj) {
     const inputList = Array.from(formItem.querySelectorAll(obj.inputSelector));
@@ -33,6 +35,7 @@ function setInputListener (inputList, formItem, obj){
         })
     })
 }
+
 /*проверка валидности поля и включение/отключение подсказок*/
 function isValidInput (input, invalidClass) {
     if (!input.validity.valid) {
@@ -43,24 +46,28 @@ function isValidInput (input, invalidClass) {
         hideInputError(input, invalidClass);
     }
 }
+
 /*выводит подсказки о некорректном вводе*/
 function showInputError(input, invalidClass, errorMessage ) {
     input.classList.add(invalidClass);
     const error = document.querySelector(`.${input.id}-error`);
     error.textContent = errorMessage
 }
+
 /*убирает подсказки о некорректном вводе*/
 function hideInputError(input, invalidClass) {
     input.classList.remove(invalidClass);
     const error = document.querySelector(`.${input.id}-error`);
     error.textContent = ''
 }
+
 /*проверка валидности формы*/
 function invalidForm(inputList) {
     return inputList.some((inputElement) => {
              return !inputElement.validity.valid;
 })
 }
+
 /*меняет состояние кнопки submit*/
 function toggleSubmitBtnState (formItem, inputList, obj) {
     const button = formItem.querySelector(obj.submitButtonSelector);
