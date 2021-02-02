@@ -40,7 +40,7 @@ function createCard(link, name) {
     card.querySelector('.card__image').style.backgroundImage = `url(${link})`;
     card.querySelector('.card__title').textContent = name;
     /*добавление обработчиков на элементы внутри карточки*/
-    card.querySelector('.card__image').addEventListener('click', openPopupImage);
+    card.querySelector('.card__image').addEventListener('click', () => openPopupImage(link, name));
     card.querySelector('.card__like').addEventListener('click', like);
     card.querySelector('.card__delete').addEventListener('click', cardDelete);
     /*_________________________________________________________*/
@@ -101,29 +101,30 @@ const errorInputList = popup.querySelectorAll('.popup__input_invalid')
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    resetError (popup)
+    document.removeEventListener('keydown', closePopupByEsc)
 }
-
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupByEsc)
 }
 
 function openPopupProfile() {
-    fillProfilePopup()
+    fillProfilePopup();
+    resetError (popupProfile);
     openPopup(popupProfile);
 }
 
-function openPopupImage(evt) {
-    const element = evt.target;
-    popupImage.src = element.style.backgroundImage.slice(5, -2);
-    popupImgCaption.textContent = element.parentElement.querySelector('.card__title').textContent
+function openPopupImage(link, name) {
+    popupImage.src = link;
+    popupImgCaption.textContent = name;
     openPopup(popupWithImage);
 }
 
 function openPopupAddCard() {
     inputCardName.value = '';
     inputCardUrl.value = '';
+    resetError (popupAddCard);
     openPopup(popupAddCard);
 }
 
@@ -159,14 +160,13 @@ if(evt.key === 'Escape') {
 
 /*закрывает попап по клику на оверлэй*/
 function closePopupByOverlay(evt) {
-    if(evt.target.nodeName === 'DIV') closePopup(evt.target)
+    if(evt.target.classList.contains('popup_opened')) closePopup(evt.target)
 }
 /*------------------обработчики событий----------------------------------*/
 closeButtonList.forEach(item => item.addEventListener('click', closePopupByBtn))
 
 overlayList.forEach(item => item.addEventListener('click', closePopupByOverlay))
 
-document.addEventListener('keydown', closePopupByEsc)
 editButton.addEventListener('click', openPopupProfile);
 addButton.addEventListener('click', openPopupAddCard);
 popupFormProfile.addEventListener('submit', ProfileFormSubmit);
