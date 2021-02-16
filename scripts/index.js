@@ -1,3 +1,5 @@
+import Card from './Card.js'
+
 const initialCards = [
     {
         name: 'Байкал',
@@ -25,36 +27,17 @@ const initialCards = [
     }
 ];
 
-/*переменные для работы с карточками*/
-const template = document.querySelector('.template').content;
+/*NodeList с карточками*/
 const cards = document.querySelector('.cards');
 
-/*функция добавляет карточки при загрузке страницы*/
-initialCards.forEach((item/*, index*/) => {
-    const card = createCard(/*index,*/ item.link, item.name);
+const cardTemplate = '.template';
+
+/* добавляет карточки при загрузке страницы*/
+initialCards.forEach((item) => {
+    const card = new Card (item.link, item.name, cardTemplate).createCard();
     cards.prepend(card);
 });
 
-function createCard(link, name) {
-    const card = template.cloneNode(true);
-    card.querySelector('.card__image').style.backgroundImage = `url(${link})`;
-    card.querySelector('.card__title').textContent = name;
-    /*добавление обработчиков на элементы внутри карточки*/
-    card.querySelector('.card__image').addEventListener('click', () => openPopupImage(link, name));
-    card.querySelector('.card__like').addEventListener('click', like);
-    card.querySelector('.card__delete').addEventListener('click', cardDelete);
-    /*_________________________________________________________*/
-    return card;
-}
-
-function like(evt) {
-    evt.target.classList.toggle('card__like_active')
-}
-
-function cardDelete(evt) {
-    const card = evt.target.closest('.card');
-    card.remove();
-}
 
 /*кнопки*/
 const closeButtonList = document.querySelectorAll('.popup__close');
@@ -139,7 +122,7 @@ function ProfileFormSubmit(evt) {
 /*функция добавляет карточку через попап*/
 function addCardFormSubmit(evt) {
     evt.preventDefault();
-    const card = createCard(inputCardUrl.value, inputCardName.value);
+    const card = new Card (inputCardUrl.value, inputCardName.value, cardTemplate).createCard();
     cards.prepend(card);
     closePopup(popupAddCard);
 }
@@ -172,3 +155,4 @@ addButton.addEventListener('click', openPopupAddCard);
 popupFormProfile.addEventListener('submit', ProfileFormSubmit);
 popupFormAddCard.addEventListener('submit', addCardFormSubmit);
 
+export {openPopupImage}

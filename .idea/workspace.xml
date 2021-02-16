@@ -20,7 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6df7bf4e-f7c4-4f41-9979-5c462dba3fe9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/Card.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/FormValidator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +55,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../russian-travel" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -101,6 +106,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="264" y="3" key="#Inspections" timestamp="1613508826671">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="264" y="3" key="#Inspections/0.0.1280.680@0.0.1280.680" timestamp="1613508826671" />
     <state x="343" y="124" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609109026786">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -113,10 +122,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="369" y="37" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1609998013155" />
-    <state x="94" y="94" width="1092" height="492" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1610592824111">
+    <state x="33" y="0" key="SettingsEditor" timestamp="1613505356089">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="94" y="94" width="1092" height="492" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1610592824111" />
+    <state x="33" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1613505356089" />
+    <state x="94" y="94" width="1092" height="492" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1613504661206">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="94" y="94" width="1092" height="492" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1613504661206" />
     <state x="415" y="73" key="refactoring.ChangeSignatureDialog" timestamp="1610509802311">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
