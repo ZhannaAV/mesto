@@ -1,4 +1,5 @@
-import Card from './Card.js'
+import Card from './Card.js';
+import {FormValidator} from "./FormValidator.js";
 
 const initialCards = [
     {
@@ -27,17 +28,26 @@ const initialCards = [
     }
 ];
 
+//данные для валидации через js
+const obj = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__submit-button',
+    inactiveButtonClass: 'popup__submit-button_disabled',
+    inputErrorClass: 'popup__input_invalid',
+    errorClass: 'popup__input-error'
+}
+
 /*NodeList с карточками*/
 const cards = document.querySelector('.cards');
 
 const cardTemplate = '.template';
 
-/* добавляет карточки при загрузке страницы*/
+/* добавляет карточки при загрузке страницы из исходного массива*/
 initialCards.forEach((item) => {
-    const card = new Card (item.link, item.name, cardTemplate).createCard();
+    const card = new Card(item.link, item.name, cardTemplate).createCard();
     cards.prepend(card);
 });
-
 
 /*кнопки*/
 const closeButtonList = document.querySelectorAll('.popup__close');
@@ -66,20 +76,10 @@ const popupImgCaption = popupWithImage.querySelector('.popup__figcaption');
 /*список оверлэй*/
 const overlayList = document.querySelectorAll('.popup')
 
-/*заполнение полей попапа для профайла до открытия попапа*/
-function fillProfilePopup () {
+/*заполнение полей попапа для профайла*/
+function fillProfilePopup() {
     inputProfileName.value = profileName.textContent;
     inputProfession.value = profileProfession.textContent;
-}
-
-fillProfilePopup()
-
-/*сбрасывает ошибки в попапе*/
-function resetError (popup) {
-const errorList = popup.querySelectorAll('.popup__input-error')
-const errorInputList = popup.querySelectorAll('.popup__input_invalid')
-    errorList.forEach(item => item.textContent = '')
-    errorInputList.forEach(item => item.classList.remove('popup__input_invalid'))
 }
 
 function closePopup(popup) {
@@ -92,13 +92,21 @@ function openPopup(popup) {
     document.addEventListener('keydown', closePopupByEsc)
 }
 
+//Дилемма: если подключать валидацию так при каждом открытии попапов, то тут можно избавиться от лишних функции сброса
+// ошибок и предварительной активации кнопки для профайла. Кода меньше. Сброс при этом работает в скрытых методах
+// FormValidator(стр 49). Мне нравится текущий вариант)
+// Можно подключить валидацию, как на 170 стр. Нужен совет)
 function openPopupProfile() {
+    // resetError (popupProfile);
     fillProfilePopup();
-    resetError (popupProfile);
+    new FormValidator(obj, popupFormProfile).enableValidation()
+    /* const popupProfileBtn = popupProfile.querySelector('.popup__submit-button')
+     popupProfileBtn.removeAttribute("disabled");
+     popupProfileBtn.classList.remove('popup__submit-button_disabled');*/
     openPopup(popupProfile);
 }
 
-function openPopupImage(link, name) {
+export function openPopupImage(link, name) {
     popupImage.src = link;
     popupImgCaption.textContent = name;
     openPopup(popupWithImage);
@@ -107,7 +115,8 @@ function openPopupImage(link, name) {
 function openPopupAddCard() {
     inputCardName.value = '';
     inputCardUrl.value = '';
-    resetError (popupAddCard);
+    new FormValidator(obj, popupFormAddCard).enableValidation()
+    // resetError (popupAddCard);
     openPopup(popupAddCard);
 }
 
@@ -122,7 +131,7 @@ function ProfileFormSubmit(evt) {
 /*функция добавляет карточку через попап*/
 function addCardFormSubmit(evt) {
     evt.preventDefault();
-    const card = new Card (inputCardUrl.value, inputCardName.value, cardTemplate).createCard();
+    const card = new Card(inputCardUrl.value, inputCardName.value, cardTemplate).createCard();
     cards.prepend(card);
     closePopup(popupAddCard);
 }
@@ -136,15 +145,17 @@ function closePopupByBtn(evt) {
 
 /*функция закрывает попап нажатии кнопки ESC*/
 function closePopupByEsc(evt) {
-if(evt.key === 'Escape') {
-    const popup = document.querySelector('.popup_opened')
-    closePopup(popup)
-}}
+    if (evt.key === 'Escape') {
+        const popup = document.querySelector('.popup_opened')
+        closePopup(popup)
+    }
+}
 
 /*закрывает попап по клику на оверлэй*/
 function closePopupByOverlay(evt) {
-    if(evt.target.classList.contains('popup_opened')) closePopup(evt.target)
+    if (evt.target.classList.contains('popup_opened')) closePopup(evt.target)
 }
+
 /*------------------обработчики событий----------------------------------*/
 closeButtonList.forEach(item => item.addEventListener('click', closePopupByBtn))
 
@@ -155,4 +166,20 @@ addButton.addEventListener('click', openPopupAddCard);
 popupFormProfile.addEventListener('submit', ProfileFormSubmit);
 popupFormAddCard.addEventListener('submit', addCardFormSubmit);
 
-export {openPopupImage}
+/*
+//включение валидации FormValidator на каждой форме
+const formList = Array.from(document.querySelectorAll(obj.formSelector));
+formList.forEach(formItem =>{
+    console.log(formItem)
+    new FormValidator(obj, formItem).enableValidation()
+})
+*/
+
+/*/!*сбрасывает ошибки в попапе*!/
+function resetError (popup) {
+const errorList = popup.querySelectorAll('.popup__input-error')
+const errorInputList = popup.querySelectorAll('.popup__input_invalid')
+    errorList.forEach(item => item.textContent = '')
+    errorInputList.forEach(item => item.classList.remove('popup__input_invalid'))
+}*/
+

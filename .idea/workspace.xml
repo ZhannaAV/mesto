@@ -20,11 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6df7bf4e-f7c4-4f41-9979-5c462dba3fe9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/Card.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/FormValidator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/FormValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/FormValidator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/validate.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +123,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="369" y="37" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1609998013155" />
+    <state x="344" y="0" key="RollbackChangesDialog" timestamp="1613519511283">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="344" y="0" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1613519511283" />
     <state x="33" y="0" key="SettingsEditor" timestamp="1613505356089">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
