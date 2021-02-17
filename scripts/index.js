@@ -103,6 +103,8 @@ function ProfileFormSubmit(evt) {
 
 /*функция добавляет карточку через попап*/
 function addCardFormSubmit(evt) {
+    //следующая строчка страхует от задвоения клика
+    popupFormAddCard.querySelector('.popup__submit-button').setAttribute("disabled", "true")
     evt.preventDefault();
     const card = new Card(inputCardUrl.value, inputCardName.value, cardClassTemplate).createCard();
     cards.prepend(card);
