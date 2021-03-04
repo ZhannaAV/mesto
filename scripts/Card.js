@@ -1,4 +1,4 @@
-import {openPopup} from './index.js'
+// import Popup from './Popup.js'
 
 export default class Card {
     constructor(link, name, template) {
@@ -24,7 +24,6 @@ export default class Card {
         this._popupImage.src = this.link;
         this._popupImgCaption.textContent = this.name;
         this._popupImage.setAttribute('alt', `увеличенное изображение ${this.name}`)
-        openPopup(this._popupWithImage);
     }
 
     _like(evt) {
