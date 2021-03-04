@@ -111,7 +111,11 @@ function addCardFormSubmit(evt) {
     //следующая строчка страхует от задвоения клика
     popupFormAddCard.querySelector('.popup__submit-button').setAttribute("disabled", "true")
     evt.preventDefault();
-    const card = new Card(inputCardUrl.value, inputCardName.value, cardClassTemplate).createCard();
+    const data = {name:inputCardName.value, link:inputCardUrl.value}
+    const card = new Card(data, cardClassTemplate,() => {
+        const popupWithImage = new PopupWithImage('.popup_for_image', data);
+        popupWithImage.open()
+    }).createCard();
     cards.prepend(card);
     popupAddCard.close();
     // closePopup(popupAddCard);

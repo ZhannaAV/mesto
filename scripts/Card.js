@@ -1,9 +1,9 @@
 export default class Card {
-    constructor(item, template,openPopupImage) {
+    constructor(item, template,handleCardClick) {
         this.name = item.name;
         this.link = item.link;
         this.template = template;
-        this._openPopupImage = openPopupImage
+        this._handleCardClick = handleCardClick
     }
 
     _createCardTemplate() {
@@ -11,7 +11,7 @@ export default class Card {
     }
 
     _createCardListeners() {
-        this._card.querySelector('.card__image').addEventListener('click', () => this._openPopupImage());
+        this._card.querySelector('.card__image').addEventListener('click', () => this._handleCardClick());
         this._card.querySelector('.card__like').addEventListener('click', this._like);
         this._card.querySelector('.card__delete').addEventListener('click', this._cardDelete);
     }
