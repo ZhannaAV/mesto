@@ -1,6 +1,8 @@
 import Card from './Card.js';
 import FormValidator from "./FormValidator.js";
 import Popup from './Popup.js'
+import PopupWithImage from './PopupWithImage.js'
+
 
 const initialCards = [
     {
@@ -140,7 +142,10 @@ popupFormAddCard.addEventListener('submit', addCardFormSubmit);
 
 /* ----------добавляет карточки при загрузке страницы из исходного массива------------*/
 initialCards.forEach((item) => {
-    const card = new Card(item.link, item.name, cardClassTemplate).createCard();
+    const card = new Card(item, cardClassTemplate, () => {
+        const popupWithImage = new PopupWithImage('.popup_for_image', item);
+        popupWithImage.open()
+    }).createCard();
     cards.prepend(card);
 });
 

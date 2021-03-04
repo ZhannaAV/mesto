@@ -1,10 +1,9 @@
-// import Popup from './Popup.js'
-
 export default class Card {
-    constructor(link, name, template) {
-        this.name = name;
-        this.link = link;
+    constructor(item, template,openPopupImage) {
+        this.name = item.name;
+        this.link = item.link;
         this.template = template;
+        this._openPopupImage = openPopupImage
     }
 
     _createCardTemplate() {
@@ -17,14 +16,6 @@ export default class Card {
         this._card.querySelector('.card__delete').addEventListener('click', this._cardDelete);
     }
 
-    _openPopupImage() {
-        this._popupWithImage = document.querySelector('.popup_for_image');
-        this._popupImage = this._popupWithImage.querySelector('.popup__image');
-        this._popupImgCaption = this._popupWithImage.querySelector('.popup__figcaption');
-        this._popupImage.src = this.link;
-        this._popupImgCaption.textContent = this.name;
-        this._popupImage.setAttribute('alt', `увеличенное изображение ${this.name}`)
-    }
 
     _like(evt) {
         evt.target.classList.toggle('card__like_active')

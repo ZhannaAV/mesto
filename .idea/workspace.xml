@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6df7bf4e-f7c4-4f41-9979-5c462dba3fe9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/Popup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/Section.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/PopupWithImage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/FormValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/FormValidator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,47 +109,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="264" y="3" key="#Inspections" timestamp="1613508826671">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="264" y="3" key="#Inspections/0.0.1280.680@0.0.1280.680" timestamp="1613508826671" />
-    <state x="343" y="124" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609109026786">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="343" y="124" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1609109026786" />
-    <state x="306" y="27" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1609109065762">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="306" y="27" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1609109065762" />
-    <state x="369" y="37" key="FileChooserDialogImpl" timestamp="1609998013155">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="369" y="37" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1609998013155" />
-    <state x="344" y="0" key="RollbackChangesDialog" timestamp="1613519511283">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="344" y="0" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1613519511283" />
-    <state x="33" y="0" key="SettingsEditor" timestamp="1613505356089">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="33" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1613505356089" />
-    <state x="94" y="94" width="1092" height="492" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1613504661206">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="94" y="94" width="1092" height="492" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1613504661206" />
-    <state x="415" y="73" key="refactoring.ChangeSignatureDialog" timestamp="1610509802311">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="415" y="73" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1610509802311" />
-    <state x="384" y="166" key="scopes" timestamp="1610498859409">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="384" y="166" key="scopes/0.0.1280.680@0.0.1280.680" timestamp="1610498859409" />
-    <state x="219" y="0" width="840" height="1034" key="search.everywhere.popup" timestamp="1609962427194">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="219" y="0" width="840" height="1034" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1609962427194" />
   </component>
 </project>
