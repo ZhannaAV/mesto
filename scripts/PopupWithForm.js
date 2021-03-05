@@ -1,5 +1,32 @@
 import Popup from './Popup.js'
+
 export default class PopupWithForm extends Popup {
-    constructor(selector) {
+    constructor(selector, handleSubmitForm) {
         super(selector);
+        this._form = this.popup.querySelector('.popup__form');
+        this._handleSubmitForm = handleSubmitForm;
+        this._handleSubmitFormBind = this._handleSubmit.bind(this)
     }
+
+    _getInputValues() {
+
+    }
+
+    _handleSubmit(evt) {
+        evt.preventDefault();
+        //следующая строчка страхует от задвоения клика, т.к. попап медленно исчезает
+        this._form.querySelector('.popup__submit-button').setAttribute("disabled", "true")
+        this._handleSubmitForm()
+        this.close()
+    }
+
+    _setEventListeners() {
+        this._form.addEventListener('submit', this._handleSubmitFormBind)
+        super._setEventListeners()
+    }
+
+    close() {
+        this._form.reset()
+        super.close()
+    }
+}
