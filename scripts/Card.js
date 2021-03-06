@@ -16,7 +16,6 @@ export default class Card {
         this._card.querySelector('.card__delete').addEventListener('click', this._cardDelete);
     }
 
-
     _like(evt) {
         evt.target.classList.toggle('card__like_active')
     }
