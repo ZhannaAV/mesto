@@ -3,6 +3,7 @@ import UserInfo from './UserInfo.js';
 import FormValidator from "./FormValidator.js";
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from './PopupWithForm.js';
+import Section from "./Section.js";
 
 const initialCards = [
     {
@@ -41,8 +42,8 @@ const obj = {
 }
 
 /*NodeList с карточками*/
-const cards = document.querySelector('.cards');
-const cardClassTemplate = '.template';
+const cardsSelector = '.cards';
+const cardTemplateSelector = '.template';
 
 /*кнопки*/
 const editButton = document.querySelector('.profile__edit-button');
@@ -54,9 +55,17 @@ const userInfoProfile = {nameSelector: '.profile__name', professionSelector: '.p
 
 /* переменные для попапа добавления карточек*/
 const popupFormAddCard = document.querySelector('.popup_for_add-card').querySelector('.popup__form');
-const inputCardName = popupFormAddCard.querySelector('.popup__input_type_place');
-const inputCardUrl = popupFormAddCard.querySelector('.popup__input_type_url');
+// const inputCardName = popupFormAddCard.querySelector('.popup__input_type_place');
+// const inputCardUrl = popupFormAddCard.querySelector('.popup__input_type_url');
 
+const sectionCards = new Section({
+    items:initialCards,
+    renderer:(item) => {
+        const card = new Card(item, cardTemplateSelector, () => {
+            new PopupWithImage('.popup_for_image', item).open()
+        }).createCard();
+        sectionCards.addItem(card)
+    }},cardsSelector)
 
 const userInfo = new UserInfo(userInfoProfile)
 
@@ -65,11 +74,12 @@ const editProfilePopup = new PopupWithForm('.popup_for_edit-profile', () => {
 })
 
 const addCardPopup = new PopupWithForm('.popup_for_add-card', () => {
-    const data = {name:inputCardName.value, link:inputCardUrl.value}
-    const card = new Card(data, cardClassTemplate,() => {
+    // const data = {name:inputCardName.value, link:inputCardUrl.value}
+    const data = addCardPopup.getInputValues()
+    const card = new Card(data, cardTemplateSelector,() => {
         new PopupWithImage('.popup_for_image', data).open()
     }).createCard();
-    cards.prepend(card);
+    sectionCards.addItem(card)
 })
 
 function openPopupProfile() {
@@ -89,11 +99,5 @@ editButton.addEventListener('click', openPopupProfile);
 addButton.addEventListener('click', openPopupAddCard);
 
 /* ----------добавляет карточки при загрузке страницы из исходного массива------------*/
-initialCards.forEach((item) => {
-    const card = new Card(item, cardClassTemplate, () => {
-        new PopupWithImage('.popup_for_image', item).open()
-    }).createCard();
-    cards.prepend(card);
-});
 
-
+sectionCards.renderItems()

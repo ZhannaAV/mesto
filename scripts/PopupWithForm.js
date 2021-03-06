@@ -7,13 +7,14 @@ export default class PopupWithForm extends Popup {
         this._handleSubmitForm = handleSubmitForm;
         this._handleSubmitFormBind = this._handleSubmit.bind(this);
     }
-
-    _getInputValues() {
+//собирает значения полей и возвращает в виде объекта
+    getInputValues() {
         this._inputList = Array.from(this._form.querySelectorAll('.popup__input'))
         this._inputDataList = {}
         this._inputList.forEach(input => {
             this._inputDataList[input.id] = input.value
         })
+        return this._inputDataList
     }
 
     _handleSubmit(evt) {
