@@ -6,12 +6,14 @@ export default class UserInfo {
         this.profileProfession = document.querySelector(professionSelector);
     }
 
-    getUserInfo(){
+//вставляет данные в попап из профайла
+    getUserInfo() {
         this.inputProfileName.value = this.profileName.textContent;
         this.inputProfession.value = this.profileProfession.textContent;
     }
 
-    setUserInfo(){
+    //вставляет данные в профайл
+    setUserInfo() {
         this.profileName.textContent = this.inputProfileName.value;
         this.profileProfession.textContent = this.inputProfession.value;
     }

@@ -9,29 +9,29 @@ export default class PopupWithForm extends Popup {
     }
 //собирает значения полей и возвращает в виде объекта
     getInputValues() {
-        this._inputList = Array.from(this._form.querySelectorAll('.popup__input'))
-        this._inputDataList = {}
+        this._inputList = Array.from(this._form.querySelectorAll('.popup__input'));
+        this._inputDataList = {};
         this._inputList.forEach(input => {
             this._inputDataList[input.id] = input.value
-        })
+        });
         return this._inputDataList
     }
 
     _handleSubmit(evt) {
         evt.preventDefault();
         //следующая строчка страхует от задвоения клика, т.к. попап медленно исчезает
-        this._form.querySelector('.popup__submit-button').setAttribute("disabled", "true")
-        this._handleSubmitForm()
+        this._form.querySelector('.popup__submit-button').setAttribute("disabled", "true");
+        this._handleSubmitForm();
         this.close()
     }
 
     _setEventListeners() {
-        this._form.addEventListener('submit', this._handleSubmitFormBind)
+        this._form.addEventListener('submit', this._handleSubmitFormBind);
         super._setEventListeners()
     }
 
     close() {
-        this._form.reset()
+        this._form.reset();
         super.close()
     }
 }
