@@ -53,3 +53,7 @@ export const userInfoProfile = {nameSelector: '.profile__name', professionSelect
 /* переменные форм для валидации*/
 export const popupFormProfile = document.querySelector('.popup_for_edit-profile').querySelector('.popup__form');
 export const popupFormAddCard = document.querySelector('.popup_for_add-card').querySelector('.popup__form');
+
+/*поля из попапа редактирования профайла*/
+export const inputProfileName = document.querySelector('.popup__input_type_name');
+export const inputProfession = document.querySelector('.popup__input_type_profession');

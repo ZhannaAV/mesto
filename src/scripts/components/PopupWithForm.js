@@ -7,8 +7,9 @@ export default class PopupWithForm extends Popup {
         this._handleSubmitForm = handleSubmitForm;
         this._handleSubmitFormBind = this._handleSubmit.bind(this);
     }
+
 //собирает значения полей и возвращает в виде объекта
-    getInputValues() {
+    _getInputValues() {
         this._inputList = Array.from(this._form.querySelectorAll('.popup__input'));
         this._inputDataList = {};
         this._inputList.forEach(input => {
@@ -19,15 +20,13 @@ export default class PopupWithForm extends Popup {
 
     _handleSubmit(evt) {
         evt.preventDefault();
-        //следующая строчка страхует от задвоения клика, т.к. попап медленно исчезает
-        this._form.querySelector('.popup__submit-button').setAttribute("disabled", "true");
-        this._handleSubmitForm();
+        this._handleSubmitForm(this._getInputValues());
         this.close()
     }
 
-    _setEventListeners() {
+    setEventListeners() {
         this._form.addEventListener('submit', this._handleSubmitFormBind);
-        super._setEventListeners()
+        super.setEventListeners()
     }
 
     close() {

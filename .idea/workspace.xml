@@ -21,9 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6df7bf4e-f7c4-4f41-9979-5c462dba3fe9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/FormValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/FormValidator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/Popup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/Popup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/PopupWithForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/PopupWithForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/PopupWithImage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/PopupWithImage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/Section.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/Section.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/components/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/UserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/utils/constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,11 +75,11 @@
       <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\src\pages" />
       <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\src" />
       <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\scripts\components" />
       <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\scripts" />
       <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\blocks\popup\__input\_type" />
-      <recent name="C:\Users\zhann\OneDrive\Desktop\Яндекс Практикум\mesto\blocks" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -95,6 +100,7 @@
       <workItem from="1612259695699" duration="2646000" />
       <workItem from="1614659213472" duration="7286000" />
       <workItem from="1615005247343" duration="12263000" />
+      <workItem from="1615221069504" duration="13211000" />
     </task>
     <servers />
   </component>
