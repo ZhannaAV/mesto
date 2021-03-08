@@ -1,3 +1,4 @@
+import '../pages/index.css';
 import Card from './components/Card.js';
 import UserInfo from './components/UserInfo.js';
 import FormValidator from "./components/FormValidator.js";
@@ -5,7 +6,6 @@ import PopupWithImage from './components/PopupWithImage.js';
 import PopupWithForm from './components/PopupWithForm.js';
 import Section from "./components/Section.js";
 import {editButton, addButton, obj, initialCards, cardTemplateSelector, cardsSelector, userInfoProfile, popupFormProfile, popupFormAddCard, addCardPopupSelector,editProfilePopupSelector, imagePopupSelector} from "./utils/constants.js";
-
 
 const sectionCards = new Section({
     items:initialCards,

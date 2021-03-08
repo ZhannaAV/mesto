@@ -4,7 +4,8 @@ export default class Popup {
         this._handleEscCloseBind = this._handleEscClose.bind(this);
         this._handleClickCloseBind = this._handleClickClose.bind(this)
     }
-
+//делаю метод приватным, т.к. считаю что это наиболее отражает смысл инкапсуляции и не засоряет index.js ненужной
+// там инфой. Если неправа - прошу объяснить почему)
     _setEventListeners() {
         document.addEventListener('keydown', this._handleEscCloseBind);
         this.popup.addEventListener('click', this._handleClickCloseBind)
