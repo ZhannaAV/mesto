@@ -1,10 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');// подключите плаг
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');// подключите плаг
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: { main: './src/scripts/index.js' },
+    entry: {main: './src/scripts/index.js'},
     output: {
         path: path.resolve(__dirname, 'dist'),// переписали точку выхода, используя утилиту path
         filename: 'main.js',
@@ -19,11 +19,16 @@ module.exports = {
         open: true // сайт будет открываться сам при запуске npm run dev
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            use: 'babel-loader',
-            exclude: '/node_modules/'
-        },
+        rules: [
+            {
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: '/node_modules/'
+            },
+            {
+                test: /\.html$/i,
+                loader: 'html-loader',
+            },
             // добавили правило для обработки файлов
             {
                 // регулярное выражение, которое ищет все файлы с такими расширениями
@@ -37,7 +42,7 @@ module.exports = {
                 // MiniCssExtractPlugin.loader и css-loader
                 use: [MiniCssExtractPlugin.loader, {
                     loader: 'css-loader',
-                    options: { importLoaders: 1 }
+                    options: {importLoaders: 1}
                 },
                     'postcss-loader']
             },
@@ -45,7 +50,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname,'./src/index.html')
+            template: path.resolve(__dirname, './src/index.html')
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin()
