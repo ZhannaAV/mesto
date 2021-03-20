@@ -3,7 +3,8 @@ export default class Card {
         this.name = item.name;
         this.link = item.link;
         this.template = template;
-        this._handleCardClick = handleCardClick
+        this._handleCardClick = handleCardClick;
+        this._likesNumber = item.likes.length
     }
 
     _createCardTemplate() {
@@ -18,6 +19,7 @@ export default class Card {
 
     _like(evt) {
         evt.target.classList.toggle('card__like_active')
+
     }
 
     _cardDelete(evt) {
@@ -29,6 +31,7 @@ export default class Card {
         this._card = this._createCardTemplate();
         this._card.querySelector('.card__image').style.backgroundImage = `url(${this.link})`;
         this._card.querySelector('.card__title').textContent = this.name;
+        this._card.querySelector('.card__like-counter').textContent = this._likesNumber;
         this._createCardListeners();
         return this._card
     }

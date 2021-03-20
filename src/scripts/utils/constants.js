@@ -1,29 +1,6 @@
-export const initialCards = [
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    }
-];
+export let initialCards = [];
+
+        // link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
 
 //данные для валидации через js
 export const obj = {
@@ -50,7 +27,10 @@ export const imagePopupSelector = '.popup_for_image';
 export const avatarPopupSelector = '.popup_for_avatar';
 
 /*переменные для редактирование профайла*/
-export const userInfoProfile = {nameSelector: '.profile__name', professionSelector: '.profile__profession'};
+export const userInfoProfile = {
+    nameSelector: '.profile__name',
+    aboutSelector: '.profile__about',
+    avatarSelector: '.profile__avatar'};
 
 /* переменные форм для валидации*/
 export const popupFormProfile = document.querySelector('.popup_for_edit-profile').querySelector('.popup__form');
@@ -60,4 +40,12 @@ export const popupFormAvatar = document.querySelector('.popup_for_avatar').query
 
 /*поля из попапа редактирования профайла*/
 export const inputProfileName = document.querySelector('.popup__input_type_name');
-export const inputProfession = document.querySelector('.popup__input_type_profession');
+export const inputAbout = document.querySelector('.popup__input_type_about');
+export const inputAvatar = document.querySelector('.popup__input_type_avatar')
+
+/*данные для сервера*/
+export  const baseUrl = 'https://mesto.nomoreparties.co/v1'
+export const personalData = {
+    cohortId: 'cohort-21',
+    token: '968d9df8-248d-4254-8e45-b3a90842092c'
+}

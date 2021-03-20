@@ -5,11 +5,11 @@ import FormValidator from "../scripts/components/FormValidator.js";
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import Section from "../scripts/components/Section.js";
+import Api from "../scripts/components/Api.js";
 import {
     editButton,
     addButton,
     obj,
-    initialCards,
     cardTemplateSelector,
     cardsSelector,
     userInfoProfile,
@@ -19,10 +19,14 @@ import {
     editProfilePopupSelector,
     imagePopupSelector,
     inputProfileName,
-    inputProfession,
+    inputAbout,
     avatarButton,
     popupFormAvatar,
-    avatarPopupSelector
+    avatarPopupSelector,
+    inputAvatar,
+    personalData,
+    baseUrl,
+    initialCards,
 } from "../scripts/utils/constants.js";
 
 //включение валидации полей попапов
@@ -39,6 +43,19 @@ popupWithImage.setEventListeners();
 
 const userInfo = new UserInfo(userInfoProfile);
 
+const api = new Api(baseUrl, personalData);
+
+//загрузка карточек с сервера
+api.getInitialCards()
+    .then(result => {
+        result.forEach(item => {
+            initialCards.push(item)
+        })
+        sectionCards.renderItems()
+    })
+    .catch((err) => {
+        console.log(err)
+    })
 
 //отвечает за отображение карточек
 const sectionCards = new Section({
@@ -48,18 +65,35 @@ const sectionCards = new Section({
     }
 }, cardsSelector);
 
+//класс для управления аватаркой
 const avatarPopup = new PopupWithForm(avatarPopupSelector, () => {
-
+    api.changeAvatarProfile(inputAvatar.value)
+        .then(result => userInfo.setUserAvatar(result.avatar))
+        .catch((err) => {
+            console.log(err)
+        })
 })
 avatarPopup.setEventListeners()
 
+//класс для редактирования данных профайла
 const editProfilePopup = new PopupWithForm(editProfilePopupSelector, () => {
-    userInfo.setUserInfo(inputProfileName.value, inputProfession.value)
+    const inputs = {name: inputProfileName.value, about: inputAbout.value};
+    api.changeInfoProfile(inputs)
+        .then(result => {
+            const {name, about} = result;
+            userInfo.setUserInfo({name, about});
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 });
 editProfilePopup.setEventListeners();
 
+//класс для добавления новых карточек
 const addCardPopup = new PopupWithForm(addCardPopupSelector, (data) => {
-    sectionCards.addItem(newCard(data));
+    api.postNewCard(data).then(result =>{
+        sectionCards.addItem(newCard(result));
+    })
     // addCardPopup.close()
     popupFormAddCard.reset();
     cardFormValidator.toggleSubmitBtnState();
@@ -73,21 +107,25 @@ function newCard(data) {
     }).createCard();
 }
 
-
-
 //заполняет попап редактирования профайла из профиля
-function fillPopup(data) {
+function fillProfilePopup(data) {
     inputProfileName.value = data.name;
-    inputProfession.value = data.profession;
+    inputAbout.value = data.about;
+}
+
+//заполняет попап редактирования аватара из профиля
+function fillAvatarPopup(data) {
+    inputAvatar.value = data.avatar;
 }
 
 function openPopupProfile() {
-    fillPopup(userInfo.getUserInfo());
+    fillProfilePopup(userInfo.getUserInfo());
     profileFormValidator.renewValidation();
     editProfilePopup.open()
 }
 
-function openPopupAvatar(){
+function openPopupAvatar() {
+    fillAvatarPopup(userInfo.getUserAvatar())
     avatarFormValidator.renewValidation()
     avatarPopup.open()
 }
@@ -105,4 +143,14 @@ avatarButton.addEventListener('click', openPopupAvatar)
 
 /* ----------добавляет карточки при загрузке страницы из исходного массива------------*/
 
-sectionCards.renderItems()
+
+//заполнение профайла с сервера
+api.getInitialProfile()
+    .then(result => {
+        const {name, about} = result;
+        userInfo.setUserInfo({name, about});
+        userInfo.setUserAvatar(result.avatar);
+    })
+    .catch((err) => {
+        console.log(err)
+    })
