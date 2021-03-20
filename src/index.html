@@ -12,7 +12,12 @@
 	</header>
 	<main class="content">
 		<section class="profile">
-			<img class="profile__avatar" src="./images/Avatar.jpg" alt="Аватар пользователя">
+			<div class="profile__avatar-block">
+				<img class="profile__avatar" src="./images/Avatar.jpg" alt="Аватар пользователя">
+				<button class="profile__avatar-button" type="button" aria-label="изменить аватар">
+					<img class="profile__avatar-svg" src="./images/Avatar_button.svg" alt="значок редактирования">
+				</button>
+			</div>
 			<div class="profile__info">
 				<h1 class="profile__name">Жак-Ив Кусто</h1>
 				<button class="profile__edit-button" type="button" aria-label="изменить профайл"></button>
@@ -26,7 +31,10 @@
 					<div class="card__image"></div>
 					<div class="card__caption">
 						<h2 class="card__title"></h2>
+						<div class="card__like-group">
 						<button class="card__like" type="button" aria-label="поставить лайк"></button>
+							<p class="card__like-counter">0</p>
+						</div>
 					</div>
 					<button class="card__delete" type="button" aria-label="удалить карточку"></button>
 				</li>
@@ -78,6 +86,26 @@
 			<figcaption class="popup__figcaption">Камчатка</figcaption>
 			<button class="popup__close" type="button" aria-label="закрыть окно"></button>
 		</figure>
+	</div>
+	<div class="popup popup_for_delete">
+		<form class="popup__form popup__form_for_submit" name="card-delete">
+			<h2 class="popup__title">Вы уверены?</h2>
+			<button class="popup__submit-button" type="submit">Да</button>
+			<button class="popup__close" type="button" aria-label="закрыть окно"></button>
+		</form>
+	</div>
+	<div class="popup popup_for_avatar">
+		<form class="popup__form" name="avatar-edit">
+			<h2 class="popup__title">Обновить аватар</h2>
+			<fieldset class="popup__input-field">
+				<input id="url" class="popup__input popup__input_type_url" type="url" name="avatar-url"
+				       placeholder="Ссылка на изображение"
+				       required>
+				<span class="popup__input-error url-error"></span>
+			</fieldset>
+			<button class="popup__submit-button" type="submit">Сохранить</button>
+			<button class="popup__close" type="button" aria-label="закрыть окно"></button>
+		</form>
 	</div>
 </div>
 </body>

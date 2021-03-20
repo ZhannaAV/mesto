@@ -19,7 +19,10 @@ import {
     editProfilePopupSelector,
     imagePopupSelector,
     inputProfileName,
-    inputProfession
+    inputProfession,
+    avatarButton,
+    popupFormAvatar,
+    avatarPopupSelector
 } from "../scripts/utils/constants.js";
 
 //включение валидации полей попапов
@@ -27,12 +30,15 @@ const profileFormValidator = new FormValidator(obj, popupFormProfile);
 profileFormValidator.enableValidation();
 const cardFormValidator = new FormValidator(obj, popupFormAddCard);
 cardFormValidator.enableValidation();
+const avatarFormValidator = new FormValidator(obj, popupFormAvatar);
+avatarFormValidator.enableValidation();
 
 //попап с картинкой
 const popupWithImage = new PopupWithImage(imagePopupSelector);
 popupWithImage.setEventListeners();
 
 const userInfo = new UserInfo(userInfoProfile);
+
 
 //отвечает за отображение карточек
 const sectionCards = new Section({
@@ -42,6 +48,10 @@ const sectionCards = new Section({
     }
 }, cardsSelector);
 
+const avatarPopup = new PopupWithForm(avatarPopupSelector, () => {
+
+})
+avatarPopup.setEventListeners()
 
 const editProfilePopup = new PopupWithForm(editProfilePopupSelector, () => {
     userInfo.setUserInfo(inputProfileName.value, inputProfession.value)
@@ -63,6 +73,8 @@ function newCard(data) {
     }).createCard();
 }
 
+
+
 //заполняет попап редактирования профайла из профиля
 function fillPopup(data) {
     inputProfileName.value = data.name;
@@ -75,6 +87,11 @@ function openPopupProfile() {
     editProfilePopup.open()
 }
 
+function openPopupAvatar(){
+    avatarFormValidator.renewValidation()
+    avatarPopup.open()
+}
+
 function openPopupAddCard() {
     cardFormValidator.renewValidation();
     addCardPopup.open();
@@ -84,6 +101,7 @@ function openPopupAddCard() {
 
 editButton.addEventListener('click', openPopupProfile);
 addButton.addEventListener('click', openPopupAddCard);
+avatarButton.addEventListener('click', openPopupAvatar)
 
 /* ----------добавляет карточки при загрузке страницы из исходного массива------------*/
 
