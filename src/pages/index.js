@@ -47,18 +47,6 @@ const userInfo = new UserInfo(userInfoProfile);
 
 const api = new Api(baseUrl, personalData);
 
-//загрузка карточек с сервера
-api.getInitialCards()
-    .then(result => {
-        result.forEach(item => {
-            initialCards.push(item)
-        })
-        sectionCards.renderItems()
-    })
-    .catch((err) => {
-        console.log(err)
-    })
-
 //отвечает за отображение карточек
 const sectionCards = new Section({
     items: initialCards,
@@ -68,8 +56,8 @@ const sectionCards = new Section({
 }, cardsSelector);
 
 //попап управления аватаркой
-const avatarPopup = new PopupWithForm(avatarPopupSelector, () => {
-    api.changeAvatarProfile(inputAvatar.value)
+const avatarPopup = new PopupWithForm(avatarPopupSelector, (inputs) => {
+    api.changeAvatarProfile(inputs)
         .then(result => userInfo.setUserAvatar(result.avatar))
         .catch((err) => {
             console.log(err)
@@ -78,8 +66,8 @@ const avatarPopup = new PopupWithForm(avatarPopupSelector, () => {
 avatarPopup.setEventListeners()
 
 //попап редактирования данных профайла
-const editProfilePopup = new PopupWithForm(editProfilePopupSelector, () => {
-    const inputs = {name: inputProfileName.value, about: inputAbout.value};
+const editProfilePopup = new PopupWithForm(editProfilePopupSelector, (inputs) => {
+    // const inputs = {name: inputProfileName.value, about: inputAbout.value};
     api.changeInfoProfile(inputs)
         .then(result => {
             const {name, about} = result;
@@ -103,19 +91,7 @@ const addCardPopup = new PopupWithForm(addCardPopupSelector, (inputs) => {
 addCardPopup.setEventListeners();
 
 //попап подтверждения удаления
-const popupSubmit = new PopupSubmit(submitPopupSelector, (data, element) => {
-    api.deleteCard(data._id)
-        .then(res => {
-            if (res.ok) {
-                element.closest('.card').remove();
-                return res.json()
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-})
+const popupSubmit = new PopupSubmit(submitPopupSelector, (data, element) => api.deleteCard(data._id, element))
 popupSubmit.setEventListeners()
 
 //создает класс под каждую карточку
@@ -125,11 +101,9 @@ function newCard(data) {
             popupWithImage.open(data)
         },
         (evt) => {
-            console.log(evt.target)
             popupSubmit.open(data, evt);
         })
     return card.createCard()
-
 }
 
 //заполняет попап редактирования профайла из профиля
@@ -175,6 +149,18 @@ api.getInitialProfile()
         const {name, about} = result;
         userInfo.setUserInfo({name, about});
         userInfo.setUserAvatar(result.avatar);
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+
+//загрузка карточек с сервера
+api.getInitialCards()
+    .then(result => {
+        result.forEach(item => {
+            initialCards.push(item)
+        })
+        sectionCards.renderItems()
     })
     .catch((err) => {
         console.log(err)

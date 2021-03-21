@@ -38,7 +38,7 @@ export default class Api {
     }
 
     //меняет данные профайла на сервере и возвращает все данные профиля
-    changeAvatarProfile(avatar) {
+    changeAvatarProfile({avatar}) {
         return fetch(`${this._baseUrl}/${this._cohortId}/users/me/avatar`, {
             method: 'PATCH',
             headers: {
@@ -87,16 +87,23 @@ export default class Api {
             })
     }
     //удаляет карточку
-    deleteCard(cardID) {
-        return fetch(`${this._baseUrl}/${this._cohortId}/cards/${cardID}`, {
+    deleteCard(cardID, element) {
+       fetch(`${this._baseUrl}/${this._cohortId}/cards/${cardID}`, {
             method: 'DELETE',
             headers: {
                 authorization: `${this._token}`
         }})
-            // .then(res => {
-            //     if (res.ok) return res.json();
-            //     return Promise.reject(`Ошибка: ${res.status}`);
-            // })
+           .then(res => {
+               if (res.ok) {
+                   element.closest('.card').remove();
+                   return res.json()
+               }
+               return Promise.reject(`Ошибка: ${res.status}`);
+           })
+           .catch((err) => {
+               console.log(err)
+           })
+
     }
 
 }

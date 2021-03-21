@@ -46,7 +46,7 @@
 		<form class="popup__form" name="popup-profile">
 			<h2 class="popup__title">Редактировать профиль</h2>
 			<fieldset class="popup__input-field">
-				<input id="profile-name" class="popup__input popup__input_type_name" type="text" name="profile-name"
+				<input id="profile-name" class="popup__input popup__input_type_name" type="text" name="name"
 				       placeholder="Имя"
 				       minlength="2" maxlength="40"
 				       required>
@@ -65,12 +65,12 @@
 		<form class="popup__form" name="popup-add-card">
 			<h2 class="popup__title">Новое место</h2>
 			<fieldset class="popup__input-field">
-				<input id="name" class="popup__input popup__input_type_place" type="text" name="place-name"
+				<input id="place-name" class="popup__input popup__input_type_place" type="text" name="name"
 				       placeholder="Название"
 				       minlength="2" maxlength="30"
 				       required>
-				<span class="popup__input-error name-error"></span>
-				<input id="link" class="popup__input popup__input_type_url" type="url" name="card-url"
+				<span class="popup__input-error place-name-error"></span>
+				<input id="link" class="popup__input popup__input_type_url" type="url" name="link"
 				       placeholder="Ссылка на картинку"
 				       required>
 				<span class="popup__input-error link-error"></span>
@@ -98,7 +98,7 @@
 		<form class="popup__form" name="avatar-edit">
 			<h2 class="popup__title">Обновить аватар</h2>
 			<fieldset class="popup__input-field">
-				<input id="avatar" class="popup__input popup__input_type_avatar" type="url" name="avatar-url"
+				<input id="avatar" class="popup__input popup__input_type_avatar" type="url" name="avatar"
 				       placeholder="Ссылка на изображение"
 				       required>
 				<span class="popup__input-error avatar-error"></span>

@@ -13,13 +13,14 @@ export default class PopupWithForm extends Popup {
         this._inputList = Array.from(this._form.querySelectorAll('.popup__input'));
         this._inputDataList = {};
         this._inputList.forEach(input => {
-            this._inputDataList[input.id] = input.value
+            this._inputDataList[input.name] = input.value
         });
         return this._inputDataList
     }
 
     _handleSubmit(evt) {
         evt.preventDefault();
+        console.log(this._getInputValues())
         this._handleSubmitForm(this._getInputValues());
         this.close()
     }
