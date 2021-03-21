@@ -104,7 +104,7 @@ addCardPopup.setEventListeners();
 function newCard(data) {
     return new Card(data, cardTemplateSelector, () => {
         popupWithImage.open(data)
-    }).createCard();
+    }).createCard()
 }
 
 //заполняет попап редактирования профайла из профиля
