@@ -4,6 +4,7 @@ import UserInfo from '../scripts/components/UserInfo.js';
 import FormValidator from "../scripts/components/FormValidator.js";
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import PopupSubmit from '../scripts/components/PopupSubmit.js';
 import Section from "../scripts/components/Section.js";
 import Api from "../scripts/components/Api.js";
 import {
@@ -27,6 +28,7 @@ import {
     personalData,
     baseUrl,
     initialCards,
+    submitPopupSelector
 } from "../scripts/utils/constants.js";
 
 //включение валидации полей попапов
@@ -65,7 +67,7 @@ const sectionCards = new Section({
     }
 }, cardsSelector);
 
-//класс для управления аватаркой
+//попап управления аватаркой
 const avatarPopup = new PopupWithForm(avatarPopupSelector, () => {
     api.changeAvatarProfile(inputAvatar.value)
         .then(result => userInfo.setUserAvatar(result.avatar))
@@ -75,7 +77,7 @@ const avatarPopup = new PopupWithForm(avatarPopupSelector, () => {
 })
 avatarPopup.setEventListeners()
 
-//класс для редактирования данных профайла
+//попап редактирования данных профайла
 const editProfilePopup = new PopupWithForm(editProfilePopupSelector, () => {
     const inputs = {name: inputProfileName.value, about: inputAbout.value};
     api.changeInfoProfile(inputs)
@@ -89,9 +91,9 @@ const editProfilePopup = new PopupWithForm(editProfilePopupSelector, () => {
 });
 editProfilePopup.setEventListeners();
 
-//класс для добавления новых карточек
-const addCardPopup = new PopupWithForm(addCardPopupSelector, (data) => {
-    api.postNewCard(data).then(result =>{
+//попап добавления новых карточек
+const addCardPopup = new PopupWithForm(addCardPopupSelector, (inputs) => {
+    api.postNewCard(inputs).then(result => {
         sectionCards.addItem(newCard(result));
     })
     // addCardPopup.close()
@@ -100,11 +102,34 @@ const addCardPopup = new PopupWithForm(addCardPopupSelector, (data) => {
 });
 addCardPopup.setEventListeners();
 
+//попап подтверждения удаления
+const popupSubmit = new PopupSubmit(submitPopupSelector, (data, element) => {
+    api.deleteCard(data._id)
+        .then(res => {
+            if (res.ok) {
+                element.closest('.card').remove();
+                return res.json()
+            }
+            return Promise.reject(`Ошибка: ${res.status}`);
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+popupSubmit.setEventListeners()
 
+//создает класс под каждую карточку
 function newCard(data) {
-    return new Card(data, cardTemplateSelector, () => {
-        popupWithImage.open(data)
-    }).createCard()
+    const card = new Card(data, cardTemplateSelector,
+        () => {
+            popupWithImage.open(data)
+        },
+        (evt) => {
+            console.log(evt.target)
+            popupSubmit.open(data, evt);
+        })
+    return card.createCard()
+
 }
 
 //заполняет попап редактирования профайла из профиля

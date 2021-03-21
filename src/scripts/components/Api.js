@@ -86,5 +86,17 @@ export default class Api {
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
     }
+    //удаляет карточку
+    deleteCard(cardID) {
+        return fetch(`${this._baseUrl}/${this._cohortId}/cards/${cardID}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `${this._token}`
+        }})
+            // .then(res => {
+            //     if (res.ok) return res.json();
+            //     return Promise.reject(`Ошибка: ${res.status}`);
+            // })
+    }
 
 }

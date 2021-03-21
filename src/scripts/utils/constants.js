@@ -25,6 +25,7 @@ export const editProfilePopupSelector = '.popup_for_edit-profile';
 export const addCardPopupSelector = '.popup_for_add-card';
 export const imagePopupSelector = '.popup_for_image';
 export const avatarPopupSelector = '.popup_for_avatar';
+export const submitPopupSelector = '.popup_for_submit'
 
 /*переменные для редактирование профайла*/
 export const userInfoProfile = {

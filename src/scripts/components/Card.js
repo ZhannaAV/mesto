@@ -1,13 +1,14 @@
 import {personalData} from "../utils/constants";
 
 export default class Card {
-    constructor(item, template, handleCardClick) {
+    constructor(item, template, handleCardClick, handleDeleteClick) {
         this.name = item.name;
         this.link = item.link;
         this.template = template;
         this._handleCardClick = handleCardClick;
         this._likesNumber = item.likes.length;
         this._idOwner = item.owner._id;
+        this._handleDeleteClick = handleDeleteClick
     }
 
     _createCardTemplate() {
@@ -19,7 +20,7 @@ export default class Card {
         this._card.querySelector('.card__like').addEventListener('click', this._like);
         this._buttonDelete = this._card.querySelector('.card__delete');
         if (this._idOwner === personalData.id) {
-            this._buttonDelete.addEventListener('click', this._cardDelete);
+            this._buttonDelete.addEventListener('click',(evt) => this._handleDeleteClick(evt));
         } else this._buttonDelete.remove()
     }
 
@@ -27,7 +28,7 @@ export default class Card {
         evt.target.classList.toggle('card__like_active')
     }
 
-    _cardDelete(evt) {
+    cardDelete(evt) {
         this._card = evt.target.closest('.card');
         this._card.remove();
     }
