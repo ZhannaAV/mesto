@@ -24,7 +24,6 @@
       <change beforePath="$PROJECT_DIR$/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/components/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/Api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/scripts/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/components/Section.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/components/Section.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +98,7 @@
       <workItem from="1615221069504" duration="13454000" />
       <workItem from="1615267284699" duration="622000" />
       <workItem from="1615810857480" duration="1209000" />
-      <workItem from="1616193633289" duration="89923000" />
+      <workItem from="1616193633289" duration="92879000" />
     </task>
     <servers />
   </component>

@@ -104,7 +104,7 @@ function newCard(data) {
             popupSubmit.open(data, evt);
         },
         (condition, element) =>{
-            toggleLike(condition,data)
+            toggleLike(condition,data._id)
                 .then(result => card.visualLike(element, result))
                 .catch((err) => console.log(err))
         })
@@ -112,9 +112,9 @@ function newCard(data) {
 }
 
 //возвращает способ обработки лайка на сервере
-function toggleLike(condition,data) {
-    if (condition) return api.removeLikeCard(data)
-    return api.setLikeCard(data)
+function toggleLike(condition,cardId) {
+    if (condition) return api.removeLikeCard(cardId)
+    return api.setLikeCard(cardId)
 
 }
 //заполняет попап редактирования профайла из профиля

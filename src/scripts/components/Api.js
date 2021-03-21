@@ -107,8 +107,8 @@ export default class Api {
             })
     }
 
-    setLikeCard(data) {
-        return fetch(`${this._baseUrl}/${this._cohortId}/cards/likes/${data._id}`, {
+    setLikeCard(cardId) {
+        return fetch(`${this._baseUrl}/${this._cohortId}/cards/likes/${cardId}`, {
             method: 'PUT',
             headers: {
                 authorization: `${this._token}`
@@ -120,8 +120,8 @@ export default class Api {
             })
     }
 
-    removeLikeCard(data) {
-        return fetch(`${this._baseUrl}/${this._cohortId}/cards/likes/${data._id}`, {
+    removeLikeCard(cardId) {
+        return fetch(`${this._baseUrl}/${this._cohortId}/cards/likes/${cardId}`, {
             method: 'DELETE',
             headers: {
                 authorization: `${this._token}`

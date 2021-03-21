@@ -5,8 +5,7 @@ export default class Card {
         this.name = item.name;
         this.link = item.link;
         this.template = template;
-        this._likesArr = item.likes
-        this._likesNumber = this._likesArr.length;
+        this._likesArr = item.likes;
         this._idOwner = item.owner._id;
         this._handleCardClick = handleCardClick;
         this._handleDeleteClick = handleDeleteClick;
@@ -27,26 +26,33 @@ export default class Card {
         } else this._buttonDelete.remove()
     }
 
-    _like(evt) {
-        this._likeCondition = this._likesArr.some(owner => {
+    _likeExist(){
+        return  this._likesArr.some(owner => {
             return owner._id === personalData.id
         })
-        this._handleLikeClick(this._likeCondition, evt.target)
+    }
+
+    _likesNumber() {
+        return this._likesArr.length;
+    }
+
+    _like(evt) {
+        this._handleLikeClick(this._likeExist(), evt.target)
     }
 
     visualLike(element, result) {
         element.classList.toggle('card__like_active');
-        console.log(result.likes)
         this._likesArr = result.likes
         this._counter = element.closest('.card__like-group').querySelector('.card__like-counter');
-        this._counter.textContent = result.likes.length
+        this._counter.textContent = this._likesNumber()
     }
 
     createCard() {
         this._card = this._createCardTemplate();
         this._card.querySelector('.card__image').style.backgroundImage = `url(${this.link})`;
         this._card.querySelector('.card__title').textContent = this.name;
-        this._card.querySelector('.card__like-counter').textContent = this._likesNumber;
+        this._card.querySelector('.card__like-counter').textContent = this._likesNumber();
+        if (this._likeExist()) this._card.querySelector('.card__like').classList.add('card__like_active')
         this._createCardListeners();
         return this._card
     }
