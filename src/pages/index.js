@@ -102,10 +102,21 @@ function newCard(data) {
         },
         (evt) => {
             popupSubmit.open(data, evt);
+        },
+        (condition, element) =>{
+            toggleLike(condition,data)
+                .then(result => card.visualLike(element, result))
+                .catch((err) => console.log(err))
         })
     return card.createCard()
 }
 
+//возвращает способ обработки лайка на сервере
+function toggleLike(condition,data) {
+    if (condition) return api.removeLikeCard(data)
+    return api.setLikeCard(data)
+
+}
 //заполняет попап редактирования профайла из профиля
 function fillProfilePopup(data) {
     inputProfileName.value = data.name;
@@ -140,7 +151,7 @@ editButton.addEventListener('click', openPopupProfile);
 addButton.addEventListener('click', openPopupAddCard);
 avatarButton.addEventListener('click', openPopupAvatar)
 
-/* ----------добавляет карточки при загрузке страницы из исходного массива------------*/
+/* ----------подтягивает с сервера данные для загрузки страницы------------*/
 
 
 //заполнение профайла с сервера

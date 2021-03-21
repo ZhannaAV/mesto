@@ -86,24 +86,51 @@ export default class Api {
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
     }
+
     //удаляет карточку
     deleteCard(cardID, element) {
-       fetch(`${this._baseUrl}/${this._cohortId}/cards/${cardID}`, {
+        fetch(`${this._baseUrl}/${this._cohortId}/cards/${cardID}`, {
             method: 'DELETE',
             headers: {
                 authorization: `${this._token}`
-        }})
-           .then(res => {
-               if (res.ok) {
-                   element.closest('.card').remove();
-                   return res.json()
-               }
-               return Promise.reject(`Ошибка: ${res.status}`);
-           })
-           .catch((err) => {
-               console.log(err)
-           })
-
+            }
+        })
+            .then(res => {
+                if (res.ok) {
+                    element.closest('.card').remove();
+                    return res.json()
+                }
+                return Promise.reject(`Ошибка: ${res.status}`);
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
+    setLikeCard(data) {
+        return fetch(`${this._baseUrl}/${this._cohortId}/cards/likes/${data._id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `${this._token}`
+            }
+        })
+            .then(res => {
+                if (res.ok) return res.json()
+                return Promise.reject(`Ошибка: ${res.status}`);
+            })
+    }
+
+    removeLikeCard(data) {
+        return fetch(`${this._baseUrl}/${this._cohortId}/cards/likes/${data._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `${this._token}`
+            }
+        })
+            .then(res => {
+                if (res.ok) return res.json()
+                return Promise.reject(`Ошибка: ${res.status}`);
+            })
+
+    }
 }

@@ -1,14 +1,17 @@
 import {personalData} from "../utils/constants";
 
 export default class Card {
-    constructor(item, template, handleCardClick, handleDeleteClick) {
+    constructor(item, template, handleCardClick, handleDeleteClick, handleLikeClick) {
         this.name = item.name;
         this.link = item.link;
         this.template = template;
-        this._handleCardClick = handleCardClick;
-        this._likesNumber = item.likes.length;
+        this._likesArr = item.likes
+        this._likesNumber = this._likesArr.length;
         this._idOwner = item.owner._id;
-        this._handleDeleteClick = handleDeleteClick
+        this._handleCardClick = handleCardClick;
+        this._handleDeleteClick = handleDeleteClick;
+        this._handleLikeClick = handleLikeClick
+        this._likeBind = this._like.bind(this)
     }
 
     _createCardTemplate() {
@@ -17,20 +20,26 @@ export default class Card {
 
     _createCardListeners() {
         this._card.querySelector('.card__image').addEventListener('click', () => this._handleCardClick());
-        this._card.querySelector('.card__like').addEventListener('click', this._like);
+        this._card.querySelector('.card__like').addEventListener('click', this._likeBind);
         this._buttonDelete = this._card.querySelector('.card__delete');
         if (this._idOwner === personalData.id) {
-            this._buttonDelete.addEventListener('click',(evt) => this._handleDeleteClick(evt));
+            this._buttonDelete.addEventListener('click', (evt) => this._handleDeleteClick(evt));
         } else this._buttonDelete.remove()
     }
 
     _like(evt) {
-        evt.target.classList.toggle('card__like_active')
+        this._likeCondition = this._likesArr.some(owner => {
+            return owner._id === personalData.id
+        })
+        this._handleLikeClick(this._likeCondition, evt.target)
     }
 
-    cardDelete(evt) {
-        this._card = evt.target.closest('.card');
-        this._card.remove();
+    visualLike(element, result) {
+        element.classList.toggle('card__like_active');
+        console.log(result.likes)
+        this._likesArr = result.likes
+        this._counter = element.closest('.card__like-group').querySelector('.card__like-counter');
+        this._counter.textContent = result.likes.length
     }
 
     createCard() {
