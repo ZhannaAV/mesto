@@ -25,13 +25,13 @@ export default class Card {
             this._buttonDelete.addEventListener('click', (evt) => this._handleDeleteClick(evt));
         } else this._buttonDelete.remove()
     }
-
+//проверяет наличие лайка
     _likeExist(){
         return  this._likesArr.some(owner => {
             return owner._id === personalData.id
         })
     }
-
+//возвращает количество лайков
     _likesNumber() {
         return this._likesArr.length;
     }
@@ -39,7 +39,7 @@ export default class Card {
     _like(evt) {
         this._handleLikeClick(this._likeExist(), evt.target)
     }
-
+//отображает лайк и количество на странице
     visualLike(element, result) {
         element.classList.toggle('card__like_active');
         this._likesArr = result.likes

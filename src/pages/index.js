@@ -7,6 +7,7 @@ import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import PopupSubmit from '../scripts/components/PopupSubmit.js';
 import Section from "../scripts/components/Section.js";
 import Api from "../scripts/components/Api.js";
+import {fillProfilePopup, fillAvatarPopup, renderLoading} from "../scripts/utils/utils.js";
 import {
     editButton,
     addButton,
@@ -19,16 +20,13 @@ import {
     addCardPopupSelector,
     editProfilePopupSelector,
     imagePopupSelector,
-    inputProfileName,
-    inputAbout,
     avatarButton,
     popupFormAvatar,
     avatarPopupSelector,
-    inputAvatar,
     personalData,
     baseUrl,
     initialCards,
-    submitPopupSelector
+    submitPopupSelector,
 } from "../scripts/utils/constants.js";
 
 //включение валидации полей попапов
@@ -50,41 +48,39 @@ const api = new Api(baseUrl, personalData);
 //отвечает за отображение карточек
 const sectionCards = new Section({
     items: initialCards,
-    renderer: (item) => {
-        sectionCards.addItem(newCard(item))
-    }
+    renderer: (item) => sectionCards.addItem(newCard(item))
 }, cardsSelector);
 
 //попап управления аватаркой
 const avatarPopup = new PopupWithForm(avatarPopupSelector, (inputs) => {
+    renderLoading(avatarPopupSelector, true);
     api.changeAvatarProfile(inputs)
         .then(result => userInfo.setUserAvatar(result.avatar))
-        .catch((err) => {
-            console.log(err)
-        })
+        .catch((err) => console.log(err))
+        .finally(() => renderLoading(avatarPopupSelector, false))
 })
 avatarPopup.setEventListeners()
 
 //попап редактирования данных профайла
 const editProfilePopup = new PopupWithForm(editProfilePopupSelector, (inputs) => {
-    // const inputs = {name: inputProfileName.value, about: inputAbout.value};
+    renderLoading(editProfilePopupSelector, true);
     api.changeInfoProfile(inputs)
         .then(result => {
             const {name, about} = result;
             userInfo.setUserInfo({name, about});
         })
-        .catch((err) => {
-            console.log(err)
-        })
+        .catch((err) => console.log(err))
+        .finally(() => renderLoading(editProfilePopupSelector, false))
 });
 editProfilePopup.setEventListeners();
 
 //попап добавления новых карточек
 const addCardPopup = new PopupWithForm(addCardPopupSelector, (inputs) => {
-    api.postNewCard(inputs).then(result => {
-        sectionCards.addItem(newCard(result));
-    })
-    // addCardPopup.close()
+    renderLoading(addCardPopupSelector, true);
+    api.postNewCard(inputs)
+        .then(result => sectionCards.addItem(newCard(result)))
+        .catch((err) => console.log(err))
+        .finally(() => renderLoading(addCardPopupSelector, false))
     popupFormAddCard.reset();
     cardFormValidator.toggleSubmitBtnState();
 });
@@ -103,8 +99,8 @@ function newCard(data) {
         (evt) => {
             popupSubmit.open(data, evt);
         },
-        (condition, element) =>{
-            toggleLike(condition,data._id)
+        (condition, element) => {
+            toggleLike(condition, data._id)
                 .then(result => card.visualLike(element, result))
                 .catch((err) => console.log(err))
         })
@@ -112,20 +108,9 @@ function newCard(data) {
 }
 
 //возвращает способ обработки лайка на сервере
-function toggleLike(condition,cardId) {
+function toggleLike(condition, cardId) {
     if (condition) return api.removeLikeCard(cardId)
     return api.setLikeCard(cardId)
-
-}
-//заполняет попап редактирования профайла из профиля
-function fillProfilePopup(data) {
-    inputProfileName.value = data.name;
-    inputAbout.value = data.about;
-}
-
-//заполняет попап редактирования аватара из профиля
-function fillAvatarPopup(data) {
-    inputAvatar.value = data.avatar;
 }
 
 function openPopupProfile() {

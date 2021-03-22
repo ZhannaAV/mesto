@@ -107,6 +107,7 @@ export default class Api {
             })
     }
 
+//плюс лайк
     setLikeCard(cardId) {
         return fetch(`${this._baseUrl}/${this._cohortId}/cards/likes/${cardId}`, {
             method: 'PUT',
@@ -120,6 +121,7 @@ export default class Api {
             })
     }
 
+//минус лайк
     removeLikeCard(cardId) {
         return fetch(`${this._baseUrl}/${this._cohortId}/cards/likes/${cardId}`, {
             method: 'DELETE',
