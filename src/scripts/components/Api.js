@@ -89,7 +89,7 @@ export default class Api {
 
     //удаляет карточку
     deleteCard(cardID, element) {
-        fetch(`${this._baseUrl}/${this._cohortId}/cards/${cardID}`, {
+        return fetch(`${this._baseUrl}/${this._cohortId}/cards/${cardID}`, {
             method: 'DELETE',
             headers: {
                 authorization: `${this._token}`
@@ -101,9 +101,6 @@ export default class Api {
                     return res.json()
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
-            })
-            .catch((err) => {
-                console.log(err)
             })
     }
 
@@ -133,6 +130,5 @@ export default class Api {
                 if (res.ok) return res.json()
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
-
     }
 }

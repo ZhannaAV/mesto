@@ -43,12 +43,10 @@ export const popupFormAvatar = document.querySelector('.popup_for_avatar').query
 /*поля из попапа редактирования профайла*/
 export const inputProfileName = document.querySelector('.popup__input_type_name');
 export const inputAbout = document.querySelector('.popup__input_type_about');
-export const inputAvatar = document.querySelector('.popup__input_type_avatar')
 
 /*данные для сервера*/
 export  const baseUrl = 'https://mesto.nomoreparties.co/v1'
 export const personalData = {
     cohortId: 'cohort-21',
     token: '968d9df8-248d-4254-8e45-b3a90842092c',
-    id: 'd7f5dc5e6f9a1907591f0fe7'
 }

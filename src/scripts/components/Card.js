@@ -1,5 +1,3 @@
-import {personalData} from "../utils/constants";
-
 export default class Card {
     constructor(item, template, handleCardClick, handleDeleteClick, handleLikeClick) {
         this.name = item.name;
@@ -18,27 +16,29 @@ export default class Card {
     }
 
     _createCardListeners() {
-        this._card.querySelector('.card__image').addEventListener('click', () => this._handleCardClick());
-        this._card.querySelector('.card__like').addEventListener('click', this._likeBind);
+        this._cardImage().addEventListener('click', () => this._handleCardClick());
+        this._cardLike().addEventListener('click', this._likeBind);
         this._buttonDelete = this._card.querySelector('.card__delete');
-        if (this._idOwner === personalData.id) {
+        if (this._idOwner === this._userId) {
             this._buttonDelete.addEventListener('click', (evt) => this._handleDeleteClick(evt));
         } else this._buttonDelete.remove()
     }
-//проверяет наличие лайка
-    _likeExist(){
-        return  this._likesArr.some(owner => {
-            return owner._id === personalData.id
-        })
+
+    getUserId(id){
+        this._userId = id
     }
-//возвращает количество лайков
-    _likesNumber() {
-        return this._likesArr.length;
+
+//проверяет наличие лайка
+    _likeExist() {
+        return this._likesArr.some(owner => {
+            return owner._id === this._userId
+        })
     }
 
     _like(evt) {
         this._handleLikeClick(this._likeExist(), evt.target)
     }
+
 //отображает лайк и количество на странице
     visualLike(element, result) {
         element.classList.toggle('card__like_active');
@@ -47,14 +47,26 @@ export default class Card {
         this._counter.textContent = this._likesNumber()
     }
 
+    //возвращает количество лайков
+    _likesNumber() {
+        return this._likesArr.length;
+    }
+
+    _cardImage() {
+        return this._card.querySelector('.card__image');
+    }
+
+    _cardLike() {
+        return this._card.querySelector('.card__like');
+    }
+
     createCard() {
         this._card = this._createCardTemplate();
-        this._card.querySelector('.card__image').style.backgroundImage = `url(${this.link})`;
+        this._cardImage().style.backgroundImage = `url(${this.link})`;
         this._card.querySelector('.card__title').textContent = this.name;
         this._card.querySelector('.card__like-counter').textContent = this._likesNumber();
-        if (this._likeExist()) this._card.querySelector('.card__like').classList.add('card__like_active')
+        if (this._likeExist()) this._cardLike().classList.add('card__like_active')
         this._createCardListeners();
         return this._card
     }
-
 }

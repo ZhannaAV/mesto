@@ -13,21 +13,24 @@ export default class UserInfo {
         }
     }
 
-    //возвращает объект с url аватара из профиля
-    getUserAvatar(){
-        return {
-            avatar: this._profileAvatar.src
-        }
+    //устанавливает id пользователя
+    setUserId(id) {
+        if (id) this._userId = id
+    }
+
+    //возвращает id пользователя
+    userId(){
+        return this._userId
     }
 
     //меняет инфу в профиле
     setUserInfo({name, about}) {
-        this._profileName.textContent = name;
-        this._profileAbout.textContent = about;
+        if (name) this._profileName.textContent = name;
+        if (about) this._profileAbout.textContent = about;
     }
 
     //меняет инфу в профиле
     setUserAvatar(avatar) {
-        this._profileAvatar.src = avatar;
+        if(avatar) this._profileAvatar.src = avatar;
     }
 }

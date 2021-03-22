@@ -1,14 +1,9 @@
-import {inputAbout, inputAvatar, inputProfileName, submitBtnSelector} from "./constants";
+import {inputAbout, inputProfileName, submitBtnSelector} from "./constants";
 
 export //заполняет попап редактирования профайла из профиля
 function fillProfilePopup(data) {
     inputProfileName.value = data.name;
     inputAbout.value = data.about;
-}
-
-export //заполняет попап редактирования аватара из профиля
-function fillAvatarPopup(data) {
-    inputAvatar.value = data.avatar;
 }
 
 export //меняет надпись на кнопке сабмита при загрузке

@@ -7,7 +7,7 @@ import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import PopupSubmit from '../scripts/components/PopupSubmit.js';
 import Section from "../scripts/components/Section.js";
 import Api from "../scripts/components/Api.js";
-import {fillProfilePopup, fillAvatarPopup, renderLoading} from "../scripts/utils/utils.js";
+import {fillProfilePopup, renderLoading} from "../scripts/utils/utils.js";
 import {
     editButton,
     addButton,
@@ -55,7 +55,10 @@ const sectionCards = new Section({
 const avatarPopup = new PopupWithForm(avatarPopupSelector, (inputs) => {
     renderLoading(avatarPopupSelector, true);
     api.changeAvatarProfile(inputs)
-        .then(result => userInfo.setUserAvatar(result.avatar))
+        .then(result => {
+            userInfo.setUserAvatar(result.avatar);
+            avatarPopup.close()
+        })
         .catch((err) => console.log(err))
         .finally(() => renderLoading(avatarPopupSelector, false))
 })
@@ -68,6 +71,7 @@ const editProfilePopup = new PopupWithForm(editProfilePopupSelector, (inputs) =>
         .then(result => {
             const {name, about} = result;
             userInfo.setUserInfo({name, about});
+            editProfilePopup.close()
         })
         .catch((err) => console.log(err))
         .finally(() => renderLoading(editProfilePopupSelector, false))
@@ -77,17 +81,24 @@ editProfilePopup.setEventListeners();
 //попап добавления новых карточек
 const addCardPopup = new PopupWithForm(addCardPopupSelector, (inputs) => {
     renderLoading(addCardPopupSelector, true);
+    popupFormAddCard.reset();
     api.postNewCard(inputs)
-        .then(result => sectionCards.addItem(newCard(result)))
+        .then(result => {
+            sectionCards.addItem(newCard(result));
+            addCardPopup.close()
+        })
         .catch((err) => console.log(err))
         .finally(() => renderLoading(addCardPopupSelector, false))
-    popupFormAddCard.reset();
-    cardFormValidator.toggleSubmitBtnState();
+
 });
 addCardPopup.setEventListeners();
 
 //попап подтверждения удаления
-const popupSubmit = new PopupSubmit(submitPopupSelector, (data, element) => api.deleteCard(data._id, element))
+const popupSubmit = new PopupSubmit(submitPopupSelector, (data, element) => {
+    api.deleteCard(data._id, element)
+        .then(() => popupSubmit.close())
+        .catch((err) => console.log(err))
+})
 popupSubmit.setEventListeners()
 
 //создает класс под каждую карточку
@@ -104,6 +115,7 @@ function newCard(data) {
                 .then(result => card.visualLike(element, result))
                 .catch((err) => console.log(err))
         })
+    card.getUserId(userInfo.userId())
     return card.createCard()
 }
 
@@ -120,7 +132,6 @@ function openPopupProfile() {
 }
 
 function openPopupAvatar() {
-    fillAvatarPopup(userInfo.getUserAvatar())
     avatarFormValidator.renewValidation()
     avatarPopup.open()
 }
@@ -138,13 +149,13 @@ avatarButton.addEventListener('click', openPopupAvatar)
 
 /* ----------подтягивает с сервера данные для загрузки страницы------------*/
 
-
 //заполнение профайла с сервера
 api.getInitialProfile()
     .then(result => {
         const {name, about} = result;
         userInfo.setUserInfo({name, about});
         userInfo.setUserAvatar(result.avatar);
+        userInfo.setUserId(result._id)
     })
     .catch((err) => {
         console.log(err)
@@ -154,7 +165,7 @@ api.getInitialProfile()
 api.getInitialCards()
     .then(result => {
         result.forEach(item => {
-            initialCards.push(item)
+            initialCards.unshift(item)
         })
         sectionCards.renderItems()
     })
