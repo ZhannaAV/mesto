@@ -156,20 +156,21 @@ api.getInitialProfile()
         userInfo.setUserInfo({name, about});
         userInfo.setUserAvatar(result.avatar);
         userInfo.setUserId(result._id)
+        //загрузка карточек с сервера  P.S. пока не разобралась как с Promise.all реализовать, поэтому
+        // использовала пока крайний случай с вложенным запросом
+        api.getInitialCards()
+            .then(result => {
+                result.forEach(item => {
+                    initialCards.unshift(item)
+                })
+                sectionCards.renderItems()
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     })
     .catch((err) => {
         console.log(err)
     })
 
-//загрузка карточек с сервера  P.S. я переписала логику взаимодействия с ID пользователя, если комментарий был о
-// чём-то другом, то просьба его смысл развернуть и пояснить более подробно
-api.getInitialCards()
-    .then(result => {
-        result.forEach(item => {
-            initialCards.unshift(item)
-        })
-        sectionCards.renderItems()
-    })
-    .catch((err) => {
-        console.log(err)
-    })
+
