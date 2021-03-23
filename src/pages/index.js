@@ -148,29 +148,22 @@ addButton.addEventListener('click', openPopupAddCard);
 avatarButton.addEventListener('click', openPopupAvatar)
 
 /* ----------подтягивает с сервера данные для загрузки страницы------------*/
-
-//заполнение профайла с сервера
-api.getInitialProfile()
-    .then(result => {
-        const {name, about} = result;
+const initials = [api.getInitialProfile(),api.getInitialCards()]
+Promise.all(initials)
+    .then(results => {
+        const [profileResult, cardsResult] = results
+        const {name, about} = profileResult;
         userInfo.setUserInfo({name, about});
-        userInfo.setUserAvatar(result.avatar);
-        userInfo.setUserId(result._id)
-        //загрузка карточек с сервера  P.S. пока не разобралась как с Promise.all реализовать, поэтому
-        // использовала пока крайний случай с вложенным запросом
-        api.getInitialCards()
-            .then(result => {
-                result.forEach(item => {
-                    initialCards.unshift(item)
-                })
-                sectionCards.renderItems()
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+        userInfo.setUserAvatar(profileResult.avatar);
+        userInfo.setUserId(profileResult._id);
+        cardsResult.forEach(item => {
+            initialCards.unshift(item)
+        })
+        sectionCards.renderItems()
     })
     .catch((err) => {
         console.log(err)
     })
+
 
 
